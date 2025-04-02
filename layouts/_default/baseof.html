@@ -56,7 +56,7 @@
 		<section>
 			<h5>Categories</h5>
 			<style>.dates span { display: none; } .dates span:first-child { display: inline-block; }</style>
-			<p><small>
+			<p style="text-align: left;"><small>
 			{{ $list := ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
 			{{ if gt (len $list) 0 }}
 				{{ range $list }}
@@ -70,7 +70,7 @@
 						{{ $slice := slice "🍅" "🌻" "🫑" "🪻" "🌷" "🌼" "🌺" "🌹" "🪷" "🥕" "🫛" "🍄" "🥝" "🍉" "🍇" "🍊" "🌽" "🥑" "🥬" "🥦" "🫚" }}
 						{{ $shuffled := shuffle $slice }}
 						{{ $random := index $shuffled 0 }}
-						<a href="{{ .Permalink }}">{{ strings.FirstUpper .Title }}</a>&nbsp;{{$random}}
+						{{$random}}&nbsp;<a href="{{ .Permalink }}">{{ strings.FirstUpper .Title }}</a>&nbsp;
 						<span class="dates">
 						{{ range where .Site.Pages.ByDate.Reverse "Type" "post"  }}
 							{{ $postDate := .Date.Format "Jan 2, 2006" }}
@@ -87,7 +87,7 @@
 			{{ end }}
 			</small></p>
 		</section>
-		<section>
+		<!--<section>
 			<h5>Blogger Stats</h5>
 			<div class='level-bars'>
 			{{ $posts := where site.RegularPages "Type" "post" }}
@@ -133,7 +133,7 @@
 				<div class=' rpgui-progress-fill' style='left: 0px; width: {{math.Mul 100 (math.Div $wordCount  100000.0)}}%;'></div></div>
 				<div class=' rpgui-progress-left-edge'></div><div class=' rpgui-progress-right-edge'></div></div>
 			</div>
-		</section>
+		</section>-->
 		<aside>
 			<header><h5>Indieweb</h5></header>
 			<div style="text-align:center;">
@@ -148,17 +148,20 @@
 			</div>
 			<header><h5>WWW & Fediverse</h5></header>
 			<p>
-			<a target='_blank' href='https://micro.blog/heyloura'><img style='image-rendering: pixelated;' height='32' src='https://heyloura.com/uploads/2022/1eb5b77d81.png' alt='microblog website icon'></a>               
-			<a target='_blank' href='https://heyloura.com/feed.xml'><img style='image-rendering: pixelated;' height='32' src='https://heyloura.com/uploads/2022/e29d8fe9f3.png' alt='rss feed'></a>
-			<a target='_blank' href='https://github.com/heyloura'><img style='image-rendering: pixelated;' height='32' src='https://heyloura.com/uploads/2023/icons8-github-30.png' alt='github link'></a>
+				✴️ Hosted on Micro.blog<br/>
+				<a target='_blank' href='https://micro.blog/heyloura'>✴️ Micro.blog account</a>
+				<a target='_blank' href='gemini://capsule.heyloura.com'>🚀 Hosted on Gemini</a><br/>
+				<a href="https://micro.blog/heyloura?remote_follow=1">⁂ @heyloura@heyloura.com</a><br/>       
+				<a target='_blank' href='https://heyloura.com/feed.xml'>🛜 RSS Available</a><br/>
+				<a target='_blank' href='https://github.com/heyloura'><img style='image-rendering: pixelated;' height='32' src='https://heyloura.com/uploads/2023/icons8-github-30.png' alt='github link'> Projects</a>
 			</p>
-			<header><h5>Gemini</h5></header>
+			<!--<header><h5>Gemini</h5></header>
 			<p>
 				<img style='image-rendering: pixelated;' height='32' width='80' src='/img/geminibtn.png' alt='gemini protocol btn'>              
 				<br/>
 				<small>heyloura.com is now available on a simpler alternative to the web. You will need a gemini client/browser to access it.<br/><br/>
 				gemini://capsule.heyloura.com/</small>
-			</p>
+			</p>-->
 			<header><h5>Analytics</h5></header>
 			<p><small><span class='tinylytics_hits'></span> website hits tracked by <a href='https://tinylytics.app/public/k8W9_T_FtwGM-5zeSNC7'>tinylytics.app</a></small>
 			<a href='#' target='_blank' class='tinylytics_webring'>

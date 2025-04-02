@@ -53,7 +53,10 @@
 
 </aside>
 <section class="content">
-
+	<section>
+		<h4>🌊 Streams</h4>
+		<img style="display:block;margin: 0px auto;" width="562" height="19" src="/img/Bubbles.png">
+	</section>
 	<section class="h-feed">
 		<h4>👩‍🌾 Featured Garden Plots</h4>
 		
@@ -65,6 +68,8 @@
 			{{ range $list }}
 
 			{{ if strings.Contains .Title "meta-" }}
+			{{ else if eq .Title "app defaults" }}
+			{{ else if eq .Title "change log" }}
 			{{ else if strings.Contains .Title "tags-" }}
 			{{ else }}
 

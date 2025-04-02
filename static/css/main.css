@@ -443,20 +443,20 @@ background-image: url("data:image/svg+xml,%3Csvg width='84' height='84' viewBox=
 			background-size: auto 100%;
 		}
 
-
+		.wooden-frame 
+		{
+			border-style: solid;
+				border-width: 15px;
+				border-image-repeat: repeat;
+				border-image-width: 18px;
+				padding: 12px;
+			border-image-source:url(/img/border-image-golden.png);
+			border-image-slice:4 4 4 4;
+			background:url(/img/background-image-golden.png) center;
+		}
 		@media (min-width:768px) {
 			
-			.wooden-frame 
-			{
-				border-style: solid;
-				    border-width: 15px;
-				    border-image-repeat: repeat;
-				    border-image-width: 18px;
-				    padding: 12px;
-				border-image-source:url(/img/border-image-golden.png);
-				border-image-slice:4 4 4 4;
-				background:url(/img/background-image-golden.png) center;
-			}
+
 			.golden-frame {
 				border-style: solid;
 				    border-width: 15px;

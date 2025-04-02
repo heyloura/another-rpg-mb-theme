@@ -12,7 +12,7 @@
 		<li>
 			<a href="/">
 				<span class="title">Hey Loura<span class="leaders" aria-hidden="true"></span></span><span class="page">
-					<img src="{{ .Site.Author.avatar }}" alt="{{ .Site.Title }} Profile Photo" class="u-photo avatar" />
+					<img height="20px" width="20px" src="{{ .Site.Author.avatar }}" alt="{{ .Site.Title }} Profile Photo" class="u-photo avatar" />
 				</span>
 			</a>
 			<ol role="list">
@@ -34,7 +34,7 @@
 						<span class="page">
 							{{- if .Page.Params.Lastmod }}
 							<time class="dt-updated" datetime="{{ .Page.Params.Lastmod.Format "2006-01-02 15:04:05 -0700" }}">
-								{{ .Page.Params.Lastmod.Format "2006.01.02" }}
+								{{ .Page.Params.Lastmod.Format "Jan 2, 2006" }}
 							</time>
 							{{- end}}
 						</span>
@@ -49,7 +49,7 @@
 						<span class="page">
 							{{- if .Page.Params.Lastmod }}
 							<time class="dt-updated" datetime="{{ .Page.Params.Lastmod.Format "2006-01-02 15:04:05 -0700" }}">
-								{{ .Page.Params.Lastmod.Format "2006.01.02" }}
+								{{ .Page.Params.Lastmod.Format "Jan 2, 2006" }}
 							</time>
 							{{- end}}
 						</span>

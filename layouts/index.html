@@ -50,12 +50,12 @@
 <section class="content">
 
 	<section class="h-feed">
-		<h4>👩‍🌾 Digital Gardening</h4>
+		<h4>👩‍🌾 Featured Garden Plots</h4>
 		
 			{{ $list := ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
 			{{ if gt (len $list) 0 }}
 
-
+			<img style="display:block;margin: 0px auto;" width="562" height="19" src="/img/grass.png">
 		<div class="frame golden-frame">
 			{{ range $list }}
 			{{ $slice := slice "🍅" "🌻" "🫑" "🪻" "🌷" "🌼" "🌺" "🌹" "🪷" "🥕" "🫛" "🍄" "🥝" "🍉" "🍇" "🍊" "🌽" "🥑" "🥬" "🥦" "🫚" }}
@@ -63,18 +63,17 @@
 			{{ $random := index $shuffled 0 }}
 			<ol class="toc-list frame grey-frame" role="list">
 				<li>
-					<h4>
-						<a href="{{ .Permalink }}">
-							~ {{$random}} {{ .Title }} {{$random}} ~
-						</a>
-					</h4>
+					<a href="{{ .Permalink }}">
+						<span class="title">{{$random}} {{ .Title }}<span class="leaders" aria-hidden="true"></span></span>
+						<span data-href="{{ .Permalink }}" class="page">🌱# 🪴# {{$random}}#</span>
+					</a>
 					<ol role="list" style="padding-left: 0;">
 						{{ $category := .Title }}
 							{{ range .Site.Pages }}
 								{{- if and (in .Params.Navigation "false") (eq (lower .Params.Title) (lower $category))}}
-								<li class="frame border-frame">
+								<!--<li class="frame border-frame">
 									{{ .Content }}
-								</li>
+								</li>-->
 								{{- end}}
 							{{ end }}
 							{{ range (where .Site.Pages.ByDate.Reverse "Type" "post") }}

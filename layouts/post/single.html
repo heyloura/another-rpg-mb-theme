@@ -63,7 +63,6 @@
     <a href="{{ .Permalink }}" class="u-url">First published on <time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time></a>
     </p>
   </footer>
-</main>
 
   {{ if templates.Exists "partials/microhook-categories.html" }}
   {{ partial "microhook-categories.html" . }}

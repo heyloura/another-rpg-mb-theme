@@ -67,10 +67,10 @@
 		<div class="frame golden-frame">
 			{{ range $list }}
 
-			{{ if strings.Contains .Title "meta-" }}
-			{{ else if eq .Title "app defaults" }}
-			{{ else if eq .Title "change log" }}
-			{{ else if strings.Contains .Title "tags-" }}
+			{{ if strings.Contains (lower .Title) "meta-" }}
+			{{ else if eq (lower .Title) "app defaults" }}
+			{{ else if eq (lower .Title) "change log" }}
+			{{ else if strings.Contains (lower .Title) "tags-" }}
 			{{ else }}
 
 

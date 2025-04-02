@@ -121,10 +121,10 @@
 			{{ if gt (len $list) 0 }}
 				{{ range $list }}
 					{{ $categoryTitle := .Title }}
-					{{ if eq .Title "newsletter" }}
-					{{ else if eq .Title "app defaults" }}
-					{{ else if eq .Title "change log" }}
-					{{ else if strings.Contains .Title "meta-" }}
+					{{ if eq (lower .Title) "newsletter" }}
+					{{ else if eq (lower .Title) "app defaults" }}
+					{{ else if eq (lower .Title) "change log" }}
+					{{ else if strings.Contains (lower .Title) "meta-" }}
 					{{ else }}
 						{{ $slice := slice "🍅" "🌻" "🫑" "🪻" "🌷" "🌼" "🌺" "🌹" "🪷" "🥕" "🫛" "🍄" "🥝" "🍉" "🍇" "🍊" "🌽" "🥑" "🥬" "🥦" "🫚" }}
 						{{ $shuffled := shuffle $slice }}

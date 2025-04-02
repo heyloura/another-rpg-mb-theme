@@ -1,13 +1,5 @@
 {{ define "main" }}
 <aside class="frame border-frame">
-	<!--<header><h5>Dear Visitor #<span class="tinylytics_hits"></span></h5></header>
-	<p>
-		Welcome to my spot on the internet. You get +5XP for visiting. 
-		Below you can find my longer blog posts. Want my micro posts? You can
-		see them under <a href="https://heyloura.com/categories/jots/">Jots</a>.
-	</p>
-	<p>You can also strike up a <a href="/replies">conversation</a> on <a href="https://micro.blog/heyloura">micro.blog</a> or on the fediverse at <a href="https://micro.blog/heyloura?remote_follow=1">@heyloura@heyloura.com</a></p>
-	<p>Yours truly, <a rel="author" class="p-author h-card" href="/">Loura</a></p>-->
 	<ol class="toc-list h-feed" role="list">
 		<li>
 			<a href="/">
@@ -67,100 +59,54 @@
 <section class="content">
 
 	<section class="h-feed">
+		<h4>👩‍🌾 Digital Gardening</h4>
+		<ol class="toc-list" role="list">
+			{{ $list := ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
+			{{ if gt (len $list) 0 }}
 
-
-
-
-		{{ $pages := where .Site.Pages.ByDate.Reverse "Type" "post" }}
-		{{ $pages = where $pages "Params.title" "ne" nil }}
-		{{- $paginator := .Paginate $pages (index .Site.Params "archive-paginate" | default 20) }}
-		{{ range ($paginator.Pages).GroupByDate "2006"  }}
-			<h4>📜 Adventure Log {{ .Key }}</h4>
-			<img style="display:block;margin: 0px auto;" width="562" height="19" src="/img/border.gif" />
-
-			<div class="frame golden-frame">
-		{{ range .Pages  }}
-			{{ $slice := slice "⚔️" "🐉" "🗡️" "🔮" "⚒️" "👻" "🧛‍♀️" "🦇" "🛡️" "👑" "🐦‍⬛" "🪙" }}
+			{{ $slice := slice "🍅" "🌻" "🫑" "🪻" "🌷" "🌼" "🌺" "🌹" "🪷" "🥕" "🫛" "🍄" "🥝" "🍉" "🍇" "🍊" "🌽" "🥑" "🥬" "🥦" "🫚" }}
 			{{ $shuffled := shuffle $slice }}
 			{{ $random := index $shuffled 0 }}
-			{{ if .Title }}
-				<dl class="h-entry frame grey-frame">
-					<dt>
-						{{ $random }} <time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time>&nbsp;
-						{{- range $index, $category := .Page.Params.categories -}}
-							{{ $random }}&nbsp;<a href="/categories/{{ $category | anchorize }}/">#{{ $category }}</a>&nbsp;
-						{{- end -}}
-						<span data-id="{{ .RelPermalink }}"></span>
-						<h1 style="text-align: left;"><a href="{{ .Permalink }}" class="u-url p-name"> {{ .Title }} </a></h1> 
-					</dt>
-					{{ if in .RawContent "<!--more-->" }}
-					<dd class="p-summary">
-					    <p>
-					    {{ $splitContents := split .RawContent "<!--more-->" }}
-					    {{ $summary := index $splitContents 0 }}
-					    {{ $summary := replaceRE "\\[\\^.*?\\]" "" $summary }}
-					    {{ $summary := replaceRE "\\n\\[\\^.*?\\]:.*" "" $summary }}
-					    {{ $summary | markdownify }}
-					    </p>
-					    <p><a href="{{ .Permalink }}">Read More →</a></p>
-					</dd>
-				    {{ else }}
-					<dd class="e-content">
-						{{ .Content | safeHTML | truncate 300 }}
-						<p><a href="{{ .Permalink }}">Read More →</a></p>
-					</dd>
-				    {{ end }}
-				</dl>
-			{{ else }}
-				<dl class="h-entry frame grey-frame">
-					<dt>
-						<a href="{{ .Permalink }}" class="u-url">
-							<time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
-						</a>
-						{{- range $index, $category := .Page.Params.categories -}}
-							{{ $random }}&nbsp;<a href="/categories/{{ $category | anchorize }}/">#{{ $category }}</a>&nbsp;
-						{{- end -}}
-						<span data-id="{{ .RelPermalink }}"></span>
-					</dt>
-					<dd class="e-content">{{ .Content }}</dd>
-				</dl>
-			{{ end }}
-	
-			<script>
-			  fetch('https://micro.blog/conversation.js?format=jsonfeed&url=https%3A%2F%2Fheyloura.com' + encodeURIComponent('{{ .RelPermalink }}'))
-			  .then(response => response.json())
-			  .then(conversation => {
-			    const repliesLink = document.querySelector('[data-id="{{ .RelPermalink }}"]');
-			    if(conversation.items.length > 0) {
-			        let postA = document.createElement('a');
-			        postA.setAttribute("href", '{{ .RelPermalink }}#conversation');
-			        postA.innerHTML =  conversation.items.length + (conversation.items.length == 1 ? ' comment' : ' comments');
-				let postSpan = document.createElement('span');
-				postSpan.innerHTML = '{{ $random }} ';
-			        repliesLink.prepend(postA);
-				repliesLink.prepend(postSpan);
-			    } else {
-			        repliesLink.remove()
-			    }
-			  })
-			  .catch((error) => {
-			    // TODO: nothing for now…
-			  });
-			</script>
-			
-		{{ end }}
-				</div>
-		{{ end }} <!-- group by -->
 		
-		{{ $pag := $.Paginator }}
-		<nav>
-			{{ if $pag.HasPrev }}
-				<a style="display:inline-block;" class="button" rel='prev' href='{{ $pag.Prev.URL }}' title='Previous Page'>← Newer Posts</a>
+			{{ range $list }}
+			{{ $category := .Title }}
+			<li>
+				<a href="{{ .Permalink }}">
+					<span class="title">{{ .Title }}<span class="leaders" aria-hidden="true"></span></span>
+					<span data-href="{{ .Permalink }}" class="page">{{$random}}</span>
+				</a>
+				<ol role="list">
+					{{ range .Site.Pages }}
+						{{- if and (in .Params.Navigation "false") (eq .Params.Title $category)}}
+						<li>
+							{{ .Content }}
+						</li>
+						{{- end}}
+					{{ end }}
+					{{ range (where .Site.Pages.ByDate.Reverse "Type" "post") }}
+						{{ if (in .Params.categories $category) }}
+						{{ if .Title }}
+						<li class="h-entry">
+							<a class="p-url" href="{{ .Permalink }}">
+								<span class="p-name title">{{ .Title }}<span class="leaders" aria-hidden="true"></span></span>
+								<span class="page">
+									{{- if .Page.Params.Lastmod }}
+									<time class="dt-updated" datetime="{{ .Page.Params.Lastmod.Format "2006-01-02 15:04:05 -0700" }}">
+										{{ .Page.Params.Lastmod.Format "Jan 2, 2006" }}
+									</time>
+									{{- end}}
+								</span>
+							</a>
+						</li>
+						{{- end}}
+						{{- end}}
+					{{end}}
+				</ol>
+			</li>
 			{{ end }}
-			{{ if $pag.HasNext }}
-				<a style="display:inline-block;" class="button" rel='next' href='{{ $pag.Next.URL }}'>Older Posts →</a>
+		
 			{{ end }}
-		</nav>
+		</ol>
 	</section> <!-- hfeed -->
 	
 </section>

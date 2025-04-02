@@ -1,6 +1,6 @@
 {{ define "main" }}
 <aside class="frame border-frame">
-	<ol class="toc-list h-feed" role="list">
+	<ol class="toc-list h-feed" role="list" style="padding-left: 0;">
 		<li>
 			<a href="/">
 				<span class="title">Hey Loura<span class="leaders" aria-hidden="true"></span></span><span class="page">
@@ -60,25 +60,26 @@
 
 	<section class="h-feed">
 		<h4>👩‍🌾 Digital Gardening</h4>
-		<ol class="toc-list" role="list">
+		
 			{{ $list := ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
 			{{ if gt (len $list) 0 }}
 
+
+		<div class="frame golden-frame">
+			{{ range $list }}
 			{{ $slice := slice "🍅" "🌻" "🫑" "🪻" "🌷" "🌼" "🌺" "🌹" "🪷" "🥕" "🫛" "🍄" "🥝" "🍉" "🍇" "🍊" "🌽" "🥑" "🥬" "🥦" "🫚" }}
 			{{ $shuffled := shuffle $slice }}
 			{{ $random := index $shuffled 0 }}
-		
-			{{ range $list }}
-			{{ $category := .Title }}
-			<li>
+			<h4>
 				<a href="{{ .Permalink }}">
-					<span class="title">{{ .Title }}<span class="leaders" aria-hidden="true"></span></span>
-					<span data-href="{{ .Permalink }}" class="page">{{$random}}</span>
+					~ {{$random}} {{ .Title }} {{$random}} ~
 				</a>
-				<ol role="list">
+			</h4>
+			<ol class="toc-list" role="list">
+				{{ $category := .Title }}
 					{{ range .Site.Pages }}
 						{{- if and (in .Params.Navigation "false") (eq .Params.Title $category)}}
-						<li>
+						<li class="frame border-frame">
 							{{ .Content }}
 						</li>
 						{{- end}}
@@ -102,11 +103,10 @@
 						{{- end}}
 					{{end}}
 				</ol>
-			</li>
+			{{ end }}
+		</div>
 			{{ end }}
 		
-			{{ end }}
-		</ol>
 	</section> <!-- hfeed -->
 	
 </section>

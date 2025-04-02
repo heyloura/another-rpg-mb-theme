@@ -71,7 +71,7 @@
 					<ol role="list" style="padding-left: 0;">
 						{{ $category := .Title }}
 							{{ range .Site.Pages }}
-								{{- if and (in .Params.Navigation "false") (eq .Params.Title $category)}}
+								{{- if and (in .Params.Navigation "false") (eq (lower .Params.Title) (lower $category))}}
 								<li class="frame border-frame">
 									{{ .Content }}
 								</li>

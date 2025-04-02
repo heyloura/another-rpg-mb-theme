@@ -29,7 +29,6 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="stylesheet" href="/css/prism.css">
 	<link rel="stylesheet" href="/css/game.css">
-	<!-- <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> -->
 	<link rel="stylesheet" href="{{ "custom.css" | relURL }}?{{ .Site.Params.theme_seconds }}">
 	{{ range .Site.Params.plugins_css }}
 	  <link rel="stylesheet" href="{{ . }}">
@@ -43,17 +42,17 @@
 		<a class='golden-button' href='/'>{{ .Site.Title }}</a>
 		<p>
 			Lvl {{ len ((where .Site.Pages "Type" "post").GroupByDate "2006" )}} Webmaster<br/>
-			<img class='avatar' style='image-rendering: pixelated; border: 4px solid #BB7E34' height='125' src="https://heyloura.com/uploads/2024/3a04add34b.png">
+			<img class='avatar' style='image-rendering: pixelated; border: 4px solid #BB7E34' height='125' src="/img/farm_avatar.png">
 		</p>
 		<p>
-			Hi, I'm Loura and this is my digital space. 
-			Please feel free to <a href="/surprise-me">explore</a>, learn more <a href="/about">about me</a>, 
-			<a href="/work">my work</a> and what I'm up to <a href="/now">now</a>.
+			Hi, I'm Loura and this is my digital space. Right now I'm exploring it as a 
+			<a href="https://maggieappleton.com/garden-history/">digital garden</a>.
+			<!--Please feel free to <a href="/surprise-me">explore</a>, learn more <a href="/about">about me</a>, 
+			<a href="/work">my work</a> and what I'm up to <a href="/now">now</a>.-->
 		</p>
-		<a class="button" href='/photos'>🔮 Photos</a>
-		<a class="button" href='/books'>📚 Library</a>
-		<a class="button" href='/archive'>🏛️ Archive</a>
-		<a class="button" href='/search-space'>🔎 Search</a>
+		<a class="button" href='/surprise-me'>🪻 Surprise</a>
+		<a class="button" href='/archive'>🫑 Archive</a>
+		<a class="button" href='/search-space'>🌻 Search</a>
 		<section>
 			<h5>Categories</h5>
 			<style>.dates span { display: none; } .dates span:first-child { display: inline-block; }</style>
@@ -68,7 +67,7 @@
 					{{ else if eq .Title "timeline" }}
 					{{ else if eq .Title "video" }}
 					{{ else }}
-						{{ $slice := slice "⚔️" "🐉" "🗡️" "🔮" "⚒️" "👻" "🧛‍♀️" "🦇" "🛡️" "👑" "🐦‍⬛" "🪙" }}
+						{{ $slice := slice "🍅" "🌻" "🫑" "🪻" "🌷" "🌼" "🌺" "🌹" "🪷" "🥕" "🫛" "🍄" "🥝" "🍉" "🍇" "🍊" "🌽" "🥑" "🥬" "🥦" "🫚" }}
 						{{ $shuffled := shuffle $slice }}
 						{{ $random := index $shuffled 0 }}
 						<a href="{{ .Permalink }}">{{ strings.FirstUpper .Title }}</a>&nbsp;{{$random}}

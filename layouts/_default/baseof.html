@@ -114,7 +114,7 @@
 		<a class="button" href='/archive'>🫑 Archive</a>
 		<a class="button" href='/search-space'>🌻 Search</a>
 		<section>
-			<h5>Categories</h5>
+			<h5>Topics</h5>
 			<style>.dates span { display: none; } .dates span:first-child { display: inline-block; }</style>
 			<p style="text-align: left;"><small>
 			{{ $list := ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
@@ -124,8 +124,7 @@
 					{{ if eq .Title "newsletter" }}
 					{{ else if eq .Title "app defaults" }}
 					{{ else if eq .Title "change log" }}
-					{{ else if eq .Title "timeline" }}
-					{{ else if eq .Title "video" }}
+					{{ else if strings.Contains .Title "meta-" }}
 					{{ else }}
 						{{ $slice := slice "🍅" "🌻" "🫑" "🪻" "🌷" "🌼" "🌺" "🌹" "🪷" "🥕" "🫛" "🍄" "🥝" "🍉" "🍇" "🍊" "🌽" "🥑" "🥬" "🥦" "🫚" }}
 						{{ $shuffled := shuffle $slice }}

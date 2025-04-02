@@ -61,7 +61,7 @@
 			{{ $slice := slice "🍅" "🌻" "🫑" "🪻" "🌷" "🌼" "🌺" "🌹" "🪷" "🥕" "🫛" "🍄" "🥝" "🍉" "🍇" "🍊" "🌽" "🥑" "🥬" "🥦" "🫚" }}
 			{{ $shuffled := shuffle $slice }}
 			{{ $random := index $shuffled 0 }}
-			<ol class="toc-list frame grey-frame" role="list" style="padding-left: 0;">
+			<ol class="toc-list frame grey-frame" role="list">
 				<li>
 					<h4>
 						<a href="{{ .Permalink }}">

@@ -53,6 +53,44 @@
 	{{ .Content }}
   </article>
 
+  <footer><p style="text-align:center;">
+    {{- if .Page.Params.Lastmod }}
+    Most recent update on
+    <time class="dt-updated" datetime="{{ .Page.Params.Lastmod.Format "2006-01-02 15:04:05 -0700" }}">
+      {{ .Page.Params.Lastmod.Format "Jan 2, 2006" }}
+    </time><br/>
+    {{- end}}
+    <a href="{{ .Permalink }}" class="u-url">First published on <time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time></a>
+    </p>
+  </footer>
+</main>
+
+  {{ if templates.Exists "partials/microhook-categories.html" }}
+  {{ partial "microhook-categories.html" . }}
+  {{ else }}
+  {{ if .Params.categories }}
+  <aside class="backlinks">
+    <ol class="toc-list h-feed" role="list">
+      <li>
+        <span class="noA"><span class="title">Categories and tags<span class="leaders" aria-hidden="true"></span></span></span><span class="page"></span>
+          <ol role="list">
+            {{ range .Params.categories }} {{ $href := print (absURL "categories/") (urlize .) }}
+            <li>
+              <a class="p-url" href="{{ $href }}">
+                <span class="p-name title">{{ . }}<span class="leaders" aria-hidden="true"></span></span>
+                <span class="page">
+                </span>
+              </a>
+            </li>
+            {{end}}
+          </ol>
+      </li>
+    </ol>
+  </aside>
+  {{ end }}
+  {{ end }}
+
+
 </section>
     {{ $link_text := or $.Site.Params.conversation_on_mb_link_text "Reply on Micro.blog" }}
     {{ $fallback_url := print "https://micro.blog/" .Site.Author.username }}

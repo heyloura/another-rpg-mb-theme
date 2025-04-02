@@ -1,5 +1,10 @@
 {{ define "main" }}
 <aside class="frame border-frame">
+	<p>
+		This website covers no particular topic and is instead an amalgamation of things
+		I find interesting or spent time researching or doing. All timestamps (unless otherwise indicated) 
+		are the dates things were last updated.
+	</p>
 	<ol class="toc-list h-feed" role="list" style="padding-left: 0;">
 		<li>
 			<ol role="list" style="padding-left: 0;">
@@ -67,7 +72,7 @@
 						<span class="title">{{$random}} {{ .Title }}<span class="leaders" aria-hidden="true"></span></span>
 						<span data-href="{{ .Permalink }}" class="page">🌱# 🪴# {{$random}}#</span>
 					</a>
-					<ol role="list" style="padding-left: 0;">
+					<ol role="list">
 						{{ $category := .Title }}
 							{{ range .Site.Pages }}
 								{{- if and (in .Params.Navigation "false") (eq (lower .Params.Title) (lower $category))}}

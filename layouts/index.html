@@ -93,7 +93,7 @@
 									{{- end}}
 								{{ end }}
 								{{ range (where .Site.Pages.ByDate.Reverse "Type" "post") }}
-									{{ if (in .Params.categories $category) }}
+									{{ if and (in .Params.categories $category) (in .Params.categories "meta-toc") }}
 									{{ if .Title }}
 									<li class="h-entry">
 										<a class="p-url" href="{{ .Permalink }}">

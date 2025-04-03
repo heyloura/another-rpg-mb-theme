@@ -125,6 +125,7 @@
 					{{ else if eq (lower .Title) "app defaults" }}
 					{{ else if eq (lower .Title) "change log" }}
 					{{ else if strings.Contains (lower .Title) "meta-" }}
+					{{ else if strings.Contains (lower .Title) "tags-" }}
 					{{ else }}
 						{{ $slice := slice "🍅" "🌻" "🫑" "🪻" "🌷" "🌼" "🌺" "🌹" "🪷" "🥕" "🫛" "🍄" "🥝" "🍉" "🍇" "🍊" "🌽" "🥑" "🥬" "🥦" "🫚" }}
 						{{ $shuffled := shuffle $slice }}

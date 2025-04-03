@@ -548,3 +548,8 @@ background-image: url("data:image/svg+xml,%3Csvg width='84' height='84' viewBox=
           .bookshelf--variant-grid .bookshelf__cover {
             width: 100%;
           }
+
+		  mark {
+			text-shadow: none;
+			padding: 0.25em;
+		  }

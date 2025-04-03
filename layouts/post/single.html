@@ -44,9 +44,7 @@
 	{{ if .Title }}
 	  	<header><h4 class="p-name">{{ .Title }}</h4></header>
   	{{ end }}
-    <header><h4>
-	<time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
-	</h4>
+    <header>
   </header>
 
   <article class="e-content">

@@ -57,6 +57,39 @@
 	<section>
 		<h4>🌊 Streams</h4>
 		<img style="display:block;margin: 0px auto;" width="562" height="19" src="/img/Bubbles.png">
+		{{ $pages := where .Site.Pages.ByDate.Reverse "Type" "post" }}
+		{{ $pages = where $pages "Params.title" "eq" nil }}
+		{{- $paginator := .Paginate $pages 3 }}
+		{{ range .Paginator.Pages }}
+        <div class="h-entry">
+            {{ if templates.Exists "partials/microhook-post-list-byline.html" }}
+            {{ partial "microhook-post-list-byline.html" . }}
+            {{ else }}
+            <a href="{{ .Permalink }}" class="post-date u-url"><time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time></a>
+            {{ end }}
+            {{ if .Title }}
+            {{ else }}
+                <div class="e-content">
+                    {{ .Content }}
+                </div>
+            {{ end }}
+            {{ if templates.Exists "partials/microhook-below-post-in-list.html" }}
+            {{ partial "microhook-below-post-in-list.html" . }}
+            {{ end }}
+        </div>
+        {{ end }}
+		<div class="post-nav">
+			{{ if $paginator.HasPrev }}
+			<span class="prev">
+				<a href="{{ $paginator.Prev.URL }}" title="Previous Page"><span class="arrow">← Newer Posts</span></a>
+			</span>
+			{{ end }}
+			{{ if $paginator.HasNext }}
+			<span class="next">
+				<a href="{{ $paginator.Next.URL }}"><span class="arrow">Older Posts →</span></a>
+			</span>
+			{{ end }}
+		</div>
 	</section>
 	<section class="h-feed">
 		<h4>👩‍🌾 Featured Garden Plots</h4>

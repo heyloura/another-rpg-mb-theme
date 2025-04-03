@@ -65,6 +65,7 @@
 
 			<img style="display:block;margin: 0px auto;" width="562" height="19" src="/img/grass.png">
 		<div class="frame golden-frame">
+			<div class="frame grey-frame">
 			{{ range $list }}
 
 			{{ if strings.Contains (lower .Title) "meta-" }}
@@ -77,7 +78,7 @@
 				{{ $slice := slice "🍅" "🌻" "🫑" "🪻" "🌷" "🌼" "🌺" "🌹" "🪷" "🥕" "🫛" "🍄" "🥝" "🍉" "🍇" "🍊" "🌽" "🥑" "🥬" "🥦" "🫚" }}
 				{{ $shuffled := shuffle $slice }}
 				{{ $random := index $shuffled 0 }}
-				<ol class="toc-list frame grey-frame" role="list">
+				<ol class="toc-list" role="list">
 					<li>
 						<a href="{{ .Permalink }}">
 							<span class="title">{{$random}} {{ .Title }}<span class="leaders" aria-hidden="true"></span></span>
@@ -116,6 +117,7 @@
 
 				{{- end }} <!-- END the if for category title check-->
 			{{ end }}
+		</div>
 		</div>
 			{{ end }}
 		

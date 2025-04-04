@@ -51,22 +51,26 @@
 	{{ $paginator := .Paginate (where .Pages.ByDate.Reverse "Type" "post") (index .Site.Params "archive-paginate" | default 10) }}
   <section  class="h-feed">
 	{{ range $paginator.Pages  }}
-	  			{{ $slice := slice "⚔️" "🐉" "🗡️" "🔮" "⚒️" "👻" "🧛‍♀️" "🦇" "🛡️" "👑" "🐦‍⬛" "🪙" }}
+			{{ $slice := slice "🍅" "🌻" "🫑" "🪻" "🌷" "🌼" "🌺" "🌹" "🪷" "🥕" "🫛" "🍄" "🥝" "🍉" "🍇" "🍊" "🌽" "🥑" "🥬" "🥦" "🫚" }}
 			{{ $shuffled := shuffle $slice }}
 			{{ $random := index $shuffled 0 }}
+
+			{{ if (not in .Page.Params.categories "meta-toc") }}
 		<dl  class="h-entry frame grey-frame">
     			<dt>
 						{{ if .Title }}
-							<a class="u-url p-name" href="{{ .Permalink }}">{{ .Title }}</a> {{$random}} <time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+							<h2><a class="u-url p-name" href="{{ .Permalink }}">{{ .Title }}</a></h2> 
+							<p>{{$random}} <time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
 						{{ else }}
-							<a class="u-url p-name" href="{{ .Permalink }}"><time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time></a>
+							<p><a class="u-url p-name" href="{{ .Permalink }}"><time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time></a>
 						{{ end }}
-  			{{- range $index, $category := .Page.Params.categories -}}
-					{{ if eq $category $title }}
-					{{ else }}
-	   				{{$random}}&nbsp;<a class="subheading" href="/categories/{{ $category | anchorize }}/">#{{ $category }}</a> 
-					{{ end }}
-  			{{- end -}}
+						{{- range $index, $category := .Page.Params.categories -}}
+								{{ if eq $category $title }}
+								{{ else }}
+				 				{{$random}}&nbsp;<a class="subheading" href="/categories/{{ $category | anchorize }}/">#{{ $category }}</a> 
+								{{ end }}
+						{{- end -}}
+						</p>
 				<span data-id="{{ .RelPermalink }}"></span>
 		</dt>
 		{{ if in .RawContent "<!--more-->" }}
@@ -93,6 +97,8 @@
 			{{ end }}
 		{{ end }}
 		</dl>
+
+		{{ end }}
 
 	  		<script>
 		  fetch('https://micro.blog/conversation.js?format=jsonfeed&url=https%3A%2F%2Fheyloura.com' + encodeURIComponent('{{ .RelPermalink }}'))

@@ -55,8 +55,9 @@
 </aside>
 <section class="content">
 	<section>
-		<p><b>Recent shorts</b></p>
+		
 		<img style="display:block;margin: 0px auto;" width="562" height="19" src="/img/pinkdaisies.png">
+		<p style="text-align: center;"><b>Recent</b></p>
 		<div class="frame grey-frame">
 			{{ $pages := where .Site.Pages.ByDate.Reverse "Type" "post" }}
 			{{ $pages = where $pages "Params.title" "eq" nil }}
@@ -70,7 +71,7 @@
 				{{ if .Title }}
 				{{ else }}
 				<p class="">
-					<a href="{{ .Permalink }}" class="u-url"><time class="dt-published" datetime="{{ .Date.Format "2006-01-02T15:04:05-0700" }}">{{ .Date.Format "2006-01-02" }}</time></a>:
+					<a href="{{ .Permalink }}" class="u-url"><time class="dt-published" datetime="{{ .Date.Format "2006-01-02T15:04:05-0700" }}">Published {{ .Date.Format "2006-01-02" }}</time></a>:
 					<span class="p-summary">{{ .Summary | truncate 200 }}</span>
 				</p>
 				{{ end }}
@@ -86,7 +87,7 @@
 				</span>
 				{{ end }}
 				{{ if $paginator.HasNext }}
-				<span class="next">
+				<span class="next" style="float: left;">
 					<a href="{{ $paginator.Next.URL }}"><span class="arrow">Older Posts →</span></a>
 				</span>
 				{{ end }}
@@ -122,6 +123,23 @@
 						</a>
 						<ol role="list" style="padding-left: 3ch;">
 							{{ $category := .Title }}
+							{{ if eq $category "Side Projects" }}
+							<li class="h-entry">
+								<a class="p-url" href="https://heyloura.com/categories/lillihub/">
+									<span class="p-name title">Lillihub 🐸<span class="leaders" aria-hidden="true"></span></span>
+									<span class="page">
+									</span>
+								</a>
+							</li>
+							{{ else if eq $category "Micro.blog" }}
+							<li class="h-entry">
+								<a class="p-url" href="https://heyloura.com/categories/hugo/">
+									<span class="p-name title">Hugo & Themes<span class="leaders" aria-hidden="true"></span></span>
+									<span class="page">
+									</span>
+								</a>
+							</li>
+							{{ end }}
 								{{ range .Site.Pages }}
 									{{- if and (in .Params.Navigation "false") (eq (lower .Params.Title) (lower $category))}}
 									<!--<li class="frame border-frame">

@@ -4,18 +4,45 @@
 {{ $random := index $shuffled 0 }}
 {{- $list_images := where .Pages ".Params.images" "!=" nil -}}
 
-       <div class="frame border-frame">			
+    <div class="frame border-frame">			
 		<header>
        	    <nav style="margin-bottom: 2em; text-align:center;"> 🐉 <a href="#posts">posts</a> {{ if gt (len $list_images) 0 }} {{index $shuffled 1}} <a href="#photos">photos</a> {{ end }} 🐦‍⬛ <a href="#bookmarks">bookmarks</a> 🧌 <a href="#books">books</a> ⚔️</nav>
        </header>
 	   {{ $category := .Title }}
 	   {{ range .Site.Pages }}
 	   {{- if and (in .Params.Navigation "false") (eq (lower .Params.Title) (lower $category))}}
-	   <li class="frame border-frame">
+	   <div>
 		   {{ .Content }}
-	   </li>
+	   </div>
 	   {{- end}}
    	   {{ end }}
+		  <ol class="toc-list h-feed" role="list" style="padding-left: 0;">
+			<li>
+				<ol role="list" style="padding-left: 0;">
+					{{ range .Pages }}
+					{{- range $index, $category := .Page.Params.categories -}}
+					{{ if eq $category "meta-toc" }}
+						<li class="h-entry">
+							<a class="u-url" href="{{ .Permalink }}">
+								<span class="p-name title">{{ .Title }}
+									<span class="leaders" aria-hidden="true"></span>
+								</span>
+								<span class="page">
+									{{- if .Page.Params.Lastmod }}
+									<time class="dt-updated" datetime="{{ .Page.Params.Lastmod.Format "2006-01-02 15:04:05 -0700" }}">
+										{{ .Page.Params.Lastmod.Format "Jan 2, 2006" }}
+									</time>
+									{{- end}}
+								</span>
+							</a>
+						</li>
+						{{ end }}
+  					{{- end -}}
+					{{ end }}
+					{{ end }}
+				</ol>
+			</li>
+		</ol>
 	</div>
 	       
 	

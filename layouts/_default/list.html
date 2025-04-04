@@ -2,7 +2,7 @@
 {{ $slice := slice "🍅" "🌻" "🫑" "🪻" "🌷" "🌼" "🌺" "🌹" "🪷" "🥕" "🫛" "🍄" "🥝" "🍉" "🍇" "🍊" "🌽" "🥑" "🥬" "🥦" "🫚" }}
 {{ $shuffled := shuffle $slice }}
 {{ $random := index $shuffled 0 }}
-{{- $list_images := where .Pages ".Params.images" "!=" nil -}}
+{{ $list_images := where .Pages ".Params.images" "!=" nil -}}
 
     <div class="frame border-frame">			
 		<header>
@@ -20,7 +20,7 @@
 			<li>
 				<ol role="list" style="padding-left: 0;">
 					{{ range .Pages }}
-					{{- range $index, $category := .Page.Params.categories -}}
+					{{ range $index, $category := .Page.Params.categories -}}
 					{{ if eq $category "meta-toc" }}
 						<li class="h-entry">
 							<a class="u-url" href="{{ .Permalink }}">
@@ -36,9 +36,8 @@
 								</span>
 							</a>
 						</li>
-						{{ end }}
-  					{{- end -}}
 					{{ end }}
+  					{{ end }}
 					{{ end }}
 				</ol>
 			</li>

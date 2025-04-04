@@ -20,7 +20,7 @@
 			<li>
 				<ol role="list" style="padding-left: 0;">
 					{{ range .Pages }}
-					{{ if in (lower .Page.Params.categories) (lower "meta-toc") }}
+					{{ if in .Page.Params.categories "meta-toc" }}
 						<li class="h-entry">
 							<a class="u-url" href="{{ .Permalink }}">
 								<span class="p-name title">{{ .Title }}

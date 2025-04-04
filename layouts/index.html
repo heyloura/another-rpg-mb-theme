@@ -133,7 +133,7 @@
 									{{ if and (in .Params.categories $category) (in .Params.categories "meta-toc") }}
 									{{ if .Title }}
 									<li class="h-entry">
-										<a class="p-url" href="{{ .Permalink }}">
+										<a class="p-url" href="{{ if .Page.Params.redirect_url }}{{ .Page.Params.redirect_url }}{{ else }}{{ .Permalink }}{{ end }}">
 											<span class="p-name title">{{ .Title }}<span class="leaders" aria-hidden="true"></span></span>
 											<span class="page">
 												{{- if .Page.Params.Lastmod }}

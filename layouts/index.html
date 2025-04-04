@@ -55,9 +55,9 @@
 </aside>
 <section class="content">
 	<section>
-		<h4>🌊 Streams</h4>
-		<img style="display:block;margin: 0px auto;" width="562" height="19" src="/img/Bubbles.png">
-		<div class="frame golden-frame">
+		<p><b>Recent shorts</b></p>
+		<img style="display:block;margin: 0px auto;" width="562" height="19" src="/img/pinkdaisies.png">
+		<div class="frame grey-frame">
 			{{ $pages := where .Site.Pages.ByDate.Reverse "Type" "post" }}
 			{{ $pages = where $pages "Params.title" "eq" nil }}
 			{{- $paginator := .Paginate $pages 3 }}

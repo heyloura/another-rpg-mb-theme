@@ -1,18 +1,24 @@
 {{ define "main" }}
-       <div class="frame border-frame">
-	<header>
-	       <h4>{{ strings.FirstUpper .Title }}</h4>
-       	       <nav style="margin-bottom: 2em; text-align:center;"> 🐉 <a href="#posts">posts</a> 👑 <a href="#photos">photos</a> 🐦‍⬛ <a href="#bookmarks">bookmarks</a> 🧌 <a href="#books">books</a> ⚔️</nav>
+{{ $slice := slice "🍅" "🌻" "🫑" "🪻" "🌷" "🌼" "🌺" "🌹" "🪷" "🥕" "🫛" "🍄" "🥝" "🍉" "🍇" "🍊" "🌽" "🥑" "🥬" "🥦" "🫚" }}
+{{ $shuffled := shuffle $slice }}
+{{ $random := index $shuffled 0 }}
+{{- $list_images := where .Pages ".Params.images" "!=" nil -}}
+
+       <div class="frame border-frame">			
+		<header>
+       	    <nav style="margin-bottom: 2em; text-align:center;"> 🐉 <a href="#posts">posts</a> {{ if gt (len $list_images) 0 }} {{index $shuffled 1}} <a href="#photos">photos</a> {{ end }} 🐦‍⬛ <a href="#bookmarks">bookmarks</a> 🧌 <a href="#books">books</a> ⚔️</nav>
        </header>
-	<iframe aria-busy="true"
-	      id="main_calendar"
-	      src="/{{ urlize (strings.ToLower .Title) }}" 
-	      loading="lazy"
-	      onload="disappear(this)"></iframe>
+	   {{ range .Site.Pages }}
+	   {{- if and (in .Params.Navigation "false") (eq (lower .Params.Title) (lower $category))}}
+	   <li class="frame border-frame">
+		   {{ .Content }}
+	   </li>
+	   {{- end}}
+   	   {{ end }}
 	</div>
 	       
 	
-      	<header id="posts"><h4>{{ strings.FirstUpper .Title }} Posts</h4></header>
+      	<header id="posts"><h4>{{ strings.FirstUpper (replace .Title "tags-" "") }}</h4></header>
 		  <img style="display:block;margin: 0px auto;" width="562" height="19" src="/img/grass.png">
 
 <div class="frame golden-frame">
@@ -96,27 +102,27 @@
 		{{ end }}
 	</nav>
 
-	
+
+	{{ if gt (len $list_images) 0 }}
 	<header id="photos"><h4>Photos</h4></header>
 	<img style="display:block;margin: 0px auto;" width="562" height="19" src="/img/grass.png">
-
-<div class="frame golden-frame">
-	{{- $list := where .Pages ".Params.images" "!=" nil -}}
-	{{- $len := (len $list) -}}
-			<section>
-				<div class="photos-grid-container square-gallery">
-			
-				{{ range $index, $value := $list }}
-					<a class="gallery-item" href="{{ .Permalink }}">
-						{{ range first 1 .Params.images }}
-							<img src="{{ . }}" width="300" height="300" class="photos-grid-item" loading="lazy" />
-						{{ end }}
-					</a>
-				{{ end }}
-			
-				</div>
-      </section>
-</div>
+	<div class="frame golden-frame">
+		{{- $list := where .Pages ".Params.images" "!=" nil -}}
+				<section>
+					<div class="photos-grid-container square-gallery">
+				
+					{{ range $index, $value := $list }}
+						<a class="gallery-item" href="{{ .Permalink }}">
+							{{ range first 1 .Params.images }}
+								<img src="{{ . }}" width="300" height="300" class="photos-grid-item" loading="lazy" />
+							{{ end }}
+						</a>
+					{{ end }}
+				
+					</div>
+		</section>
+	</div>
+	{{ end }}
 
 
 <header id="bookmarks"><h4>Bookmarks</h4></header>

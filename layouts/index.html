@@ -55,9 +55,8 @@
 </aside>
 <section class="content">
 	<section>
-		
-		<img style="display:block;margin: 0px auto;" width="562" height="19" src="/img/pinkdaisies.png">
 		<p style="text-align: center;"><b>Recent</b></p>
+		<img style="display:block;margin: 0px auto;" width="562" height="19" src="/img/pinkdaisies.png">
 		<div class="frame grey-frame">
 			{{ $pages := where .Site.Pages.ByDate.Reverse "Type" "post" }}
 			{{ $pages = where $pages "Params.title" "eq" nil }}

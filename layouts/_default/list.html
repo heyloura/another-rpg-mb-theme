@@ -60,17 +60,16 @@
     			<dt>
 						{{ if .Title }}
 							<h2><a class="u-url p-name" href="{{ .Permalink }}">{{ .Title }}</a></h2> 
-							<p>{{$random}} <time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+							{{$random}} <time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
 						{{ else }}
-							<p><a class="u-url p-name" href="{{ .Permalink }}"><time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time></a>
+							<a class="u-url p-name" href="{{ .Permalink }}"><time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time></a>
 						{{ end }}
 						{{- range $index, $category := .Page.Params.categories -}}
 								{{ if eq $category $title }}
 								{{ else }}
-				 				{{$random}}&nbsp;<a class="subheading" href="/categories/{{ $category | anchorize }}/">#{{ $category }}</a> 
+				 				{{$random}}&nbsp;<a class="subheading" href="/categories/{{ urlize (replace $category "tags-" "") }}">#{{ $category }}</a> 
 								{{ end }}
 						{{- end -}}
-						</p>
 				<span data-id="{{ .RelPermalink }}"></span>
 		</dt>
 		{{ if in .RawContent "<!--more-->" }}

@@ -8,8 +8,9 @@
 		<header>
        	    <nav style="margin-bottom: 2em; text-align:center;"> 🐉 <a href="#posts">posts</a> {{ if gt (len $list_images) 0 }} {{index $shuffled 1}} <a href="#photos">photos</a> {{ end }} 🐦‍⬛ <a href="#bookmarks">bookmarks</a> 🧌 <a href="#books">books</a> ⚔️</nav>
        </header>
+	   {{ $category := .Title }}
 	   {{ range .Site.Pages }}
-	   {{- if eq (lower .Params.Title)}}
+	   {{- if and (in .Params.Navigation "false") (eq (lower .Params.Title) (lower $category))}}
 	   <li class="frame border-frame">
 		   {{ .Content }}
 	   </li>

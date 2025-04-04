@@ -55,7 +55,7 @@
 			{{ $shuffled := shuffle $slice }}
 			{{ $random := index $shuffled 0 }}
 
-			{{ if (not in .Page.Params.categories "meta-toc") }}
+			{{ if not (in .Page.Params.categories "meta-toc") }}
 		<dl  class="h-entry frame grey-frame">
     			<dt>
 						{{ if .Title }}

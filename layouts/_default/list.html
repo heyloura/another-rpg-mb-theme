@@ -5,9 +5,9 @@
 {{ $list_images := where .Pages ".Params.images" "!=" nil -}}
 
     <div class="frame border-frame">			
-		<header>
+		<!--<header>
        	    <nav style="margin-bottom: 2em; text-align:center;"> 🐉 <a href="#posts">posts</a> {{ if gt (len $list_images) 0 }} {{index $shuffled 1}} <a href="#photos">photos</a> {{ end }} 🐦‍⬛ <a href="#bookmarks">bookmarks</a> 🧌 <a href="#books">books</a> ⚔️</nav>
-       </header>
+       </header>-->
 	   {{ $category := .Title }}
 	   {{ range .Site.Pages }}
 	   {{- if and (in .Params.Navigation "false") (eq (lower .Params.Title) (lower $category))}}
@@ -128,6 +128,11 @@
 	</nav>
 
 
+
+
+
+
+
 	{{ if gt (len $list_images) 0 }}
 	<header id="photos"><h4>Photos</h4></header>
 	<img style="display:block;margin: 0px auto;" width="562" height="19" src="/img/grass.png">
@@ -150,10 +155,10 @@
 	{{ end }}
 
 
-<header id="bookmarks"><h4>Bookmarks</h4></header>
-<img style="display:block;margin: 0px auto;" width="562" height="19" src="/img/border.gif" />
-<div class="frame golden-frame">
-<section>
+
+
+
+
 {{ $feed_url := $.Site.Params.feeds.bookmarks_json }}
 {{ $response := getJSON $feed_url }}
 {{ $title := .Title }}
@@ -173,6 +178,10 @@
 
     {{ if eq $tag $title }}
 
+	<header id="bookmarks"><h4>Bookmarks</h4></header>
+<img style="display:block;margin: 0px auto;" width="562" height="19" src="/img/border.gif" />
+<div class="frame golden-frame">
+<section>
 
    {{ range $response.items }}
    {{ $url := urls.Parse .url }}
@@ -189,27 +198,28 @@
      {{ end }}
     {{ end }}
 
-
+</section>
+</div>
     {{ end }}
 
 {{ end }}
 
 {{ end }}
 
-</section>
-</div>
 
 
 
 
 
 
-
+{{ $bookshelf := .Title  }}
+{{ $list_books := (index .Site.Data.bookshelves $bookshelf) -}}
+{{ if gt (len $list_books) 0 }}
 	<header id="books"><h4>Books</h4></header>
 	<img style="display:block;margin: 0px auto;" width="562" height="19" src="/img/border.gif" />
 <div class="frame golden-frame">
 <section>
-	{{ $bookshelf := .Title  }}
+	
 
 <ul class="bookshelf bookshelf--variant-grid">
   {{ range (index .Site.Data.bookshelves $bookshelf) }}
@@ -232,25 +242,7 @@
 </section>
 </div>
 
-<script>
-	/* Make the iframe hidden while loading  */
-(async () => {
-  let div = document.createElement('div');
-  let ref = document.getElementsByTagName('base')[0] || 
-            document.getElementsByTagName('script')[0];
+{{end}}
 
-  div.innerHTML = '<style> iframe { visibility: hidden; } </style>';
-  ref.parentNode.insertBefore(div, ref);
-})();  
-
-/* Copy the contents of the iframe into the DOM and execute scripts  */
-function disappear(frame) {
-let body = (frame.contentDocument.body||frame.contentDocument);
-
-frame.before(frame.contentDocument.getElementById('post-content'));
-
-frame.remove();
-}
-</script>
 {{ partial "game.html" . }}
 {{ end }}

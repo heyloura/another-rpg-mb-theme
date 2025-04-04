@@ -55,9 +55,9 @@
 </aside>
 <section class="content">
 	<section>
-		<p style="text-align: center;"><b>Recent</b></p>
+		<p style="text-align: center;margin-bottom: 0;margin-top: 2em;"><b>Recent</b></p>
 		<img style="display:block;margin: 0px auto;" width="562" height="19" src="/img/pinkdaisies.png">
-		<div class="frame grey-frame">
+		<div style="clear: both;" class="frame grey-frame">
 			{{ $pages := where .Site.Pages.ByDate.Reverse "Type" "post" }}
 			{{ $pages = where $pages "Params.title" "eq" nil }}
 			{{- $paginator := .Paginate $pages 3 }}
@@ -79,7 +79,7 @@
 				{{ end }}
 			</div>
 			{{ end }}
-			<div class="post-nav">
+			<div style="height: 1.5em;" class="post-nav">
 				{{ if $paginator.HasPrev }}
 				<span class="prev">
 					<a href="{{ $paginator.Prev.URL }}" title="Previous Page"><span class="arrow">← Newer Posts</span></a>
@@ -118,7 +118,7 @@
 					<li>
 						<a href="{{ .Permalink }}">
 							<span class="title">{{ strings.FirstUpper .Title }}<span class="leaders" aria-hidden="true"></span></span>
-							<span data-href="{{ .Permalink }}" class="page">🌱# 🪴# {{$random}}#</span>
+							<span data-href="{{ .Permalink }}" class="page">🌱🪴{{$random}}#</span>
 						</a>
 						<ol role="list" style="padding-left: 3ch;">
 							{{ $category := .Title }}

@@ -444,7 +444,7 @@ background-image: url("data:image/svg+xml,%3Csvg width='84' height='84' viewBox=
 		}
 		@media (min-width:768px) {
 			
-			.border-frame, .microblog_post, .microblog_reply_form  {
+			.border-frame, .microblog_post, .microblog_reply_form, #search-space-results  {
 				border-style: solid;
 				border-width: 15px;
 				border-image-repeat: repeat;
@@ -467,7 +467,7 @@ background-image: url("data:image/svg+xml,%3Csvg width='84' height='84' viewBox=
 				border-width:7px;
 				background:url(/img/background-image-grey.png) center;
 			}
-			.golden-frame, #search-space-results {
+			.golden-frame {
 				border-style: solid;
 				    border-width: 15px;
 				    border-image-repeat: repeat;

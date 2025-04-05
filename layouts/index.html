@@ -114,13 +114,13 @@
 				{{ $slice := slice "🍅" "🌻" "🫑" "🪻" "🌷" "🌼" "🌺" "🌹" "🪷" "🥕" "🫛" "🍄" "🥝" "🍉" "🍇" "🍊" "🌽" "🥑" "🥬" "🥦" "🫚" }}
 				{{ $shuffled := shuffle $slice }}
 				{{ $random := index $shuffled 0 }}
-				<ol class="toc-list" role="list" style="padding-left: 1ch;">
+				<ol class="toc-list" role="list" style="padding-left: 0;">
 					<li>
 						<a href="{{ .Permalink }}">
 							<span class="title">{{ strings.FirstUpper .Title }}<span class="leaders" aria-hidden="true"></span></span>
-							<span data-href="{{ .Permalink }}" class="page">🌱🪴{{$random}}#</span>
+							<span data-href="{{ .Permalink }}" class="page">🌱🪴{{$random}}</span>
 						</a>
-						<ol role="list" style="padding-left: 3ch;">
+						<ol role="list" style="padding-left: 2ch;">
 							{{ $category := .Title }}
 							{{ if eq $category "Side Projects" }}
 							<li class="h-entry">
@@ -131,13 +131,7 @@
 								</a>
 							</li>
 							{{ else if eq $category "Micro.blog" }}
-							<li class="h-entry">
-								<a class="p-url" href="https://heyloura.com/categories/hugo/">
-									<span class="p-name title">Hugo & Themes<span class="leaders" aria-hidden="true"></span></span>
-									<span class="page">
-									</span>
-								</a>
-							</li>
+
 							{{ end }}
 								{{ range .Site.Pages }}
 									{{- if and (in .Params.Navigation "false") (eq (lower .Params.Title) (lower $category))}}

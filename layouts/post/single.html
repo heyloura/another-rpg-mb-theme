@@ -70,9 +70,10 @@
   <aside class="backlinks">
     <ol class="toc-list h-feed" role="list" style="padding-left: 0;">
       <li>
-        <span class="noA"><span class="title">Categories and tags<span class="leaders" aria-hidden="true"></span></span></span><span class="page"></span>
+        <span class="noA"><span class="title">Topics and tags<span class="leaders" aria-hidden="true"></span></span></span><span class="page"></span>
           <ol role="list">
-            {{ range .Params.categories }} {{ $href := print (absURL "categories/") (urlize (replace . "tags-" "")) }}
+            {{ range .Params.categories }} 
+			{{ $href := print (absURL "categories/") (urlize (replace . "tags-" "")) }}
             <li>
               <a class="p-url" href="{{ $href }}">
                 <span class="p-name title">{{ . }}<span class="leaders" aria-hidden="true"></span></span>

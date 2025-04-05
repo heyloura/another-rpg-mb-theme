@@ -88,19 +88,7 @@ background-image: url("data:image/svg+xml,%3Csvg width='84' height='84' viewBox=
 			background-clip:padding-box;
 			background-origin:padding-box
 		}
- 		.border-frame, .microblog_post, .microblog_reply_form  {
-			border-image-source:url(/img/border-image.png);
-			border-image-slice:6 6 6 6;
-			background:url(/img/background-image.png) center;
-			border-radius: 2em;
-		}
-		.grey-frame, blockquote, #search-space-results {
-			border-image-source:url(/img/border-image-grey.png);
-			border-image-slice:3 3 3 3;
-			border-image-width:7px;
-			border-width:7px;
-			background:url(/img/background-image-grey.png) center;
-		}
+
 		a {
 			color: yellow;
 			font-size: 1.0em;
@@ -355,7 +343,7 @@ background-image: url("data:image/svg+xml,%3Csvg width='84' height='84' viewBox=
 				background-repeat: no-repeat;
 			}
 		}
-		.wooden-frame, .golden-frame 
+		.wooden-frame, .golden-frame, .border-frame, .grey-frame 
 		{
 			padding: 0;
 			border: 0;
@@ -456,7 +444,29 @@ background-image: url("data:image/svg+xml,%3Csvg width='84' height='84' viewBox=
 		}
 		@media (min-width:768px) {
 			
-
+			.border-frame  {
+				border-style: solid;
+				border-width: 15px;
+				border-image-repeat: repeat;
+				border-image-width: 18px;
+				padding: 12px;
+				border-image-source:url(/img/border-image.png);
+				border-image-slice:6 6 6 6;
+				background:url(/img/background-image.png) center;
+				border-radius: 2em;
+			}
+			.grey-frame {
+				border-style: solid;
+				border-width: 15px;
+				border-image-repeat: repeat;
+				border-image-width: 18px;
+				padding: 12px;
+				border-image-source:url(/img/border-image-grey.png);
+				border-image-slice:3 3 3 3;
+				border-image-width:7px;
+				border-width:7px;
+				background:url(/img/background-image-grey.png) center;
+			}
 			.golden-frame {
 				border-style: solid;
 				    border-width: 15px;

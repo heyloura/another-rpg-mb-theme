@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width initial-scale=1">
+	<meta http-equiv="Content-Security-Policy" content="style-src 'none'">
 	<title>{{ .Site.Title }}</title>
 	<meta name="description" content="{{ .Summary }}">
 	<link rel="shortcut icon" href="https://micro.blog/{{ .Site.Author.username }}/favicon.png" type="image/x-icon" />
@@ -96,6 +97,7 @@
 	</style>
 </head>
 <body>
+	<mark><b>My website is not broken... today is <a href="https://css-naked-day.org/">CSS Naked Day.</a></b></mark>
 <div class="btn-hamburger"><button id="openMenu" style="float: right;" class="toggle-button button">☰</button></div>
 <main style="clear: both;" class="frame wooden-frame">
 	<nav class="left" id="menu">

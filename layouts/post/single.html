@@ -38,7 +38,8 @@
 	margin-bottom: 0;
 }
 </style>
-<section class="h-entry frame border-frame">
+<div class="h-entry">
+<section class="frame border-frame">
 
   <header>
 	{{ if .Title }}
@@ -60,9 +61,9 @@
     </time><br/>
     {{- end}}
     <a href="{{ .Permalink }}" class="u-url">First published on <time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "2 Jan 06" }}</time></a>
-    &nbsp;<a target="_blank" href="https://lillihub.com/post?edit={{ .Permalink }}&destination=https%3A%2F%2Fheyloura.micro.blog%2F&area=blog">✏️</a></p>
+    &nbsp;<a style="display: none;" target="_blank" href="https://lillihub.com/post?edit={{ .Permalink }}&destination=https%3A%2F%2Fheyloura.micro.blog%2F&area=blog">✏️</a></p>
   </footer>
-
+</div>
   {{ if templates.Exists "partials/microhook-categories.html" }}
   {{ partial "microhook-categories.html" . }}
   {{ else }}
@@ -75,7 +76,7 @@
             {{ range .Params.categories }} 
 			{{ $href := print (absURL "categories/") (urlize (replace . "tags-" "")) }}
             <li>
-              <a class="p-url" href="{{ $href }}">
+              <a class="u-url" href="{{ $href }}">
                 <span class="p-name title">{{ . }}<span class="leaders" aria-hidden="true"></span></span>
                 <span class="page">
                 </span>

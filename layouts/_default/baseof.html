@@ -248,7 +248,9 @@
 <footer style='padding-top: 1em;'>
     <p style="text-align:center">Made with 💖 and frequently under 🚧</p>
 </footer>
-
+{{ range .Site.Params.plugins_js }}
+<script src="{{ . }}"></script>
+{{ end }}
 <script>
   window.Prism = window.Prism || {};
   window.Prism.manual = true;
@@ -392,8 +394,6 @@ emoji();
 	}
 }
 </script>-->
-    {{ range .Site.Params.plugins_js }}
-      <script src="{{ . }}"></script>
-    {{ end }}
+
 </body>
 </html>

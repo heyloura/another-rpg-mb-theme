@@ -246,7 +246,7 @@ background-image: url("data:image/svg+xml,%3Csvg width='84' height='84' viewBox=
 		.rpgui-progress-fill {
 			background-image: url(/img/progress.png);
 		}
-		input[type=checkbox].rpgui-checkbox+label {
+		label > input[type=checkbox] {
 			background: url(img/checkbox-off.png) no-repeat;
 			line-height: 24px;
 			display: inline-block;
@@ -256,10 +256,10 @@ background-image: url("data:image/svg+xml,%3Csvg width='84' height='84' viewBox=
 			margin-top: 10px;
 			margin-bottom: 10px;
 		}
-		input[type=checkbox] {
+		label > input[type=checkbox] {
 			display: none;
 		}
-		input[type=checkbox]:checked+label {
+		label > input[type=checkbox]:checked {
 			background: url(/img/checkbox-on.png) no-repeat;
 			line-height: 24px;
 			display: inline-block;
@@ -267,7 +267,7 @@ background-image: url("data:image/svg+xml,%3Csvg width='84' height='84' viewBox=
 			padding-left: 34px;
 			height: 24px;
 		}
-		input[type=checkbox].rpgui-checkbox+label, input[type=radio].rpgui-radio+label {
+		label > input[type=checkbox], label > input[type=radio] {
 			cursor: url(/img/cursor/point.png) 10 0, auto;
 			display: inline;
 		}

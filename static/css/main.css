@@ -154,7 +154,7 @@ background-image: url("data:image/svg+xml,%3Csvg width='84' height='84' viewBox=
 			right: 0;
 			float: right;
 		}
-		.button, #search-space-form > p:nth-child(1) > button:nth-child(3), p.microblog_reply_button > input[type=submit] {
+		.button, #search-space-form > p:nth-child(1) > button:nth-child(3), p.microblog_reply_button > input[type=submit], .mpe-button {
 			overflow: hidden;
 			background: url(/img/button.png) center no-repeat no-repeat;
 			background-clip: padding-box;
@@ -246,6 +246,30 @@ background-image: url("data:image/svg+xml,%3Csvg width='84' height='84' viewBox=
 		.rpgui-progress-fill {
 			background-image: url(/img/progress.png);
 		}
+		input[type=checkbox].rpgui-checkbox+label {
+			background: url(img/checkbox-off.png) no-repeat;
+			line-height: 24px;
+			display: inline-block;
+			background-size: auto 100%;
+			padding-left: 34px;
+			height: 24px;
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+		input[type=checkbox] {
+			display: none;
+		}
+		input[type=checkbox]:checked+label {
+			background: url(/img/checkbox-on.png) no-repeat;
+			line-height: 24px;
+			display: inline-block;
+			background-size: auto 100%;
+			padding-left: 34px;
+			height: 24px;
+		}
+		input[type=checkbox].rpgui-checkbox+label, input[type=radio].rpgui-radio+label {
+			cursor: url(/img/cursor/point.png) 10 0, auto;
+		}
 		.e-content img, .photos-grid-container img, .bookshelf img, .post-content img, .square-gallery img 
 		{
 			image-rendering: auto;
@@ -295,7 +319,7 @@ background-image: url("data:image/svg+xml,%3Csvg width='84' height='84' viewBox=
 			-webkit-tap-highlight-color: rgba(0, 0, 0, .5);
 			color: #fff;
 		}
-		#search-space-form > p:nth-child(1) > button:nth-child(3), p.microblog_reply_button > input[type=submit] 
+		#search-space-form > p:nth-child(1) > button:nth-child(3), p.microblog_reply_button > input[type=submit], .mpe-button 
 		{
 			width: auto;
 		}

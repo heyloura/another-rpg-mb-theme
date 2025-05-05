@@ -269,6 +269,7 @@ background-image: url("data:image/svg+xml,%3Csvg width='84' height='84' viewBox=
 		}
 		input[type=checkbox].rpgui-checkbox+label, input[type=radio].rpgui-radio+label {
 			cursor: url(/img/cursor/point.png) 10 0, auto;
+			display: inline;
 		}
 		.e-content img, .photos-grid-container img, .bookshelf img, .post-content img, .square-gallery img 
 		{
@@ -366,6 +367,15 @@ background-image: url("data:image/svg+xml,%3Csvg width='84' height='84' viewBox=
 				background-size: cover;
 				background-repeat: no-repeat;
 			}
+		}
+		[contenteditable] {
+			border: 2px yellow solid;
+		}
+		fieldset {
+			border: 2px yellow solid;
+		}
+		legend {
+			color: greenyellow;
 		}
 		.wooden-frame, .golden-frame, .border-frame, .grey-frame 
 		{

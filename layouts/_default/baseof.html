@@ -98,6 +98,27 @@
 			bottom: 1em;
 			right: 1em;
 		}
+		del {
+			display: none;
+		}
+		del.show {
+			display: inline-block;
+			text-decoration: none;
+			background-color: rgba(255,0,0,.25);
+		}
+		del.show::before {
+			content: attr(cite) " [deletion start] "
+		}
+		del.show::after {
+			content: " [deletion end] "
+		}
+		ins.show::after {
+			content: attr(datetime);
+			text-decoration: none;
+			padding: 0 0.5em;
+			display: inline-block;
+			background-color: rgba(0,255,0,.25);
+		}
 	</style>
 </head>
 <body>

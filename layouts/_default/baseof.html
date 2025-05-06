@@ -127,7 +127,14 @@
 		function toggleChanges() {
 			var dels = document.querySelectorAll['del'];
 			var ins = document.querySelectorAll['ins'];
-			elements = [...dels,...ins];
+			let elements = [];
+			if(dels) {
+				elements = [...dels];
+			}
+			if(ins) {
+				elements = [...elements, ...ins];
+			}
+			
 			elements.forEach(e => {
 				if (e.classList.contains('show')) {
 					e.classList.remove('show');

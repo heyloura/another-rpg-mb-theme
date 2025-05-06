@@ -246,31 +246,6 @@ background-image: url("data:image/svg+xml,%3Csvg width='84' height='84' viewBox=
 		.rpgui-progress-fill {
 			background-image: url(/img/progress.png);
 		}
-		label > input[type=checkbox] {
-			background: url(img/checkbox-off.png) no-repeat;
-			line-height: 24px;
-			display: inline-block;
-			background-size: auto 100%;
-			padding-left: 34px;
-			height: 24px;
-			margin-top: 10px;
-			margin-bottom: 10px;
-		}
-		label > input[type=checkbox] {
-			display: none;
-		}
-		label > input[type=checkbox]:checked {
-			background: url(/img/checkbox-on.png) no-repeat;
-			line-height: 24px;
-			display: inline-block;
-			background-size: auto 100%;
-			padding-left: 34px;
-			height: 24px;
-		}
-		label > input[type=checkbox], label > input[type=radio] {
-			cursor: url(/img/cursor/point.png) 10 0, auto;
-			display: inline;
-		}
 		.e-content img, .photos-grid-container img, .bookshelf img, .post-content img, .square-gallery img 
 		{
 			image-rendering: auto;
@@ -397,10 +372,10 @@ background-image: url("data:image/svg+xml,%3Csvg width='84' height='84' viewBox=
 		  z-index:5;
 		  cursor: url(/img/cursor/default.png) 10 0, auto;
 		}
-		.rpgui-content input[type=checkbox].rpgui-checkbox {
+		input[type=checkbox].mpe-checkbox {
 			display: none;
 		}
-		.rpgui-content input, .rpgui-content textarea {
+		input, textarea {
     		-webkit-box-sizing: border-box;
 			-moz-box-sizing: border-box;
 			box-sizing: border-box;
@@ -419,23 +394,23 @@ background-image: url("data:image/svg+xml,%3Csvg width='84' height='84' viewBox=
 			user-select: text;
 			-webkit-tap-highlight-color: rgba(0, 0, 0, .5);
 		}
-		.rpgui-content input, .rpgui-content textarea, .rpgui-list-imp, .rpgui-list-imp li {
+		input, textarea, .rpgui-list-imp, .rpgui-list-imp li {
 			text-shadow: -2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000;
 			color: #fff;
 		}
-		.rpgui-content input, .rpgui-content textarea, .rpgui-cursor-select {
+		input, textarea, .rpgui-cursor-select {
 			cursor: url(/img/cursor/select.png) 10 0, auto;
 		}
-		.rpgui-content label, .rpgui-content li {
+		label, li {
 			color: #fff;
 			text-shadow: -2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000;
 			font-size: 1em;
 		}
-		.rpgui-content label {
+		label {
 			line-height: 20px;
 			display: inline;
 		}
-		.rpgui-content input[type=checkbox].rpgui-checkbox+label {
+		input[type=checkbox].mpe-checkbox+label {
 			background: url(/img/checkbox-off.png) no-repeat;
 			line-height: 24px;
 			display: inline-block;
@@ -445,10 +420,10 @@ background-image: url("data:image/svg+xml,%3Csvg width='84' height='84' viewBox=
 			margin-top: 10px;
 			margin-bottom: 10px;
 		}
-		.rpgui-button, .rpgui-content a, .rpgui-content button, .rpgui-content input[type=checkbox].rpgui-checkbox+label, .rpgui-content input[type=radio].rpgui-radio+label, .rpgui-dropdown-imp, .rpgui-list-imp, .rpgui-slider-container {
+		.rpgui-button, a, button, input[type=checkbox].mpe-checkbox+label, input[type=radio].rpgui-radio+label, .rpgui-dropdown-imp, .rpgui-list-imp, .rpgui-slider-container {
 			cursor: url(/img/cursor/point.png) 10 0, auto;
 		}
-		.rpgui-content input[type=checkbox].rpgui-checkbox:checked+label {
+		input[type=checkbox].mpe-checkbox:checked+label {
 			background: url(/img/checkbox-on.png) no-repeat;
 			line-height: 24px;
 			display: inline-block;
@@ -456,11 +431,11 @@ background-image: url("data:image/svg+xml,%3Csvg width='84' height='84' viewBox=
 			padding-left: 34px;
 			height: 24px;
 		}
-		.rpgui-content input[type=checkbox].rpgui-checkbox.golden+label {
+		input[type=checkbox].mpe-checkbox.golden+label {
 			background: url(/img/checkbox-golden-off.png) no-repeat;
 			background-size: auto 100%;
 		}
-		.rpgui-content input[type=checkbox].rpgui-checkbox.golden:checked+label {
+		input[type=checkbox].mpe-checkbox.golden:checked+label {
 			background: url(/img/checkbox-golden-on.png) no-repeat;
 			background-size: auto 100%;
 		}

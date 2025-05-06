@@ -101,6 +101,9 @@
 		del {
 			display: none;
 		}
+		ins {
+			text-decoration: none;
+		}
 		del.show {
 			display: inline-block;
 			text-decoration: none;
@@ -114,6 +117,9 @@
 			content: " [deletion end] ";
 			font-size: small;
 		}
+		ins.show {
+			text-decoration: underline;
+		}
 		ins.show::after {
 			content: attr(datetime);
 			text-decoration: none;
@@ -124,9 +130,9 @@
 		}
 	</style>
 	<script>
-		function toggleChanges() {
-			var dels = document.querySelectorAll['del'];
-			var ins = document.querySelectorAll['ins'];
+        function toggleChanges() {
+			var dels = document.querySelectorAll('del');
+			var ins = document.querySelectorAll('ins');
 			let elements = [];
 			if(dels) {
 				elements = [...dels];
@@ -134,7 +140,6 @@
 			if(ins) {
 				elements = [...elements, ...ins];
 			}
-			
 			elements.forEach(e => {
 				if (e.classList.contains('show')) {
 					e.classList.remove('show');

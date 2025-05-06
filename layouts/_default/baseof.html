@@ -107,10 +107,12 @@
 			background-color: rgba(255,0,0,.25);
 		}
 		del.show::before {
-			content: attr(cite) " [deletion start] "
+			content: attr(datetime) " [deletion start] ";
+			font-size: small;
 		}
 		del.show::after {
-			content: " [deletion end] "
+			content: " [deletion end] ";
+			font-size: small;
 		}
 		ins.show::after {
 			content: attr(datetime);
@@ -118,8 +120,23 @@
 			padding: 0 0.5em;
 			display: inline-block;
 			background-color: rgba(0,255,0,.25);
+			font-size: small;
 		}
 	</style>
+	<script>
+		function toggleChanges() {
+			var dels = document.querySelectorAll['del'];
+			var ins = document.querySelectorAll['ins'];
+			elements = [...dels,...ins];
+			elements.forEach(e => {
+				if (e.classList.contains('show')) {
+					e.classList.remove('show');
+				} else {
+					e.classList.add('show');
+				}
+			});
+		}
+	</script>
 </head>
 <body>
 	<!--<mark><b>My website is not broken... today is <a href="https://css-naked-day.org/">CSS Naked Day.</a></b></mark>-->

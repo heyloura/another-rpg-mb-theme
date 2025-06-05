@@ -58,7 +58,6 @@
 		<img style="display:block;margin: 0px auto;" width="562" height="19" src="/img/pinkdaisies.png">
 		<div style="clear: both;" class="frame grey-frame">
 			{{ $pages := where .Site.Pages.ByDate.Reverse "Type" "post" }}
-			{{ $pages = where $pages "Params.title" "eq" nil }}
 			{{- $paginator := .Paginate $pages 3 }}
 			{{ range .Paginator.Pages }}
 			<div class="h-entry">

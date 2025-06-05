@@ -67,6 +67,9 @@
 				{{ end }}
 				<p class="">
 					<a href="{{ .Permalink }}" class="u-url"><time class="dt-published" datetime="{{ .Date.Format "2006-01-02T15:04:05-0700" }}">Published {{ .Date.Format "2 Jan 06" }}</time></a>:
+					{{ if .Title }}
+					<h2>{{ .Title }}</h2>
+					{{ end }}
 					<span class="e-content">{{ .Content | safeHTML | strings.Truncate 600 }}</span>
 				</p>
 				{{ if templates.Exists "partials/microhook-below-post-in-list.html" }}

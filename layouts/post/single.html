@@ -46,7 +46,7 @@
 	  	<h4 class="p-name">{{ .Title }}</h4>
   	{{ end }}
 	  {{ with .Params.audio }}
-	  <script type="text/javascript" src="https://micro.blog/narration.js?url={{ .Permalink }}"></script>
+	  <script type="text/javascript" src="https://micro.blog/narration.js?url={{ . }}"></script>
 	{{ end }}
   </header>
 

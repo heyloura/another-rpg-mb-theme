@@ -66,13 +66,10 @@
 				{{ partial "microhook-post-list-byline.html" . }}
 				{{ else }}
 				{{ end }}
-				{{ if .Title }}
-				{{ else }}
 				<p class="">
 					<a href="{{ .Permalink }}" class="u-url"><time class="dt-published" datetime="{{ .Date.Format "2006-01-02T15:04:05-0700" }}">Published {{ .Date.Format "2 Jan 06" }}</time></a>:
 					<span class="e-content">{{ .Content | safeHTML | strings.Truncate 600 }}</span>
 				</p>
-				{{ end }}
 				{{ if templates.Exists "partials/microhook-below-post-in-list.html" }}
 				{{ partial "microhook-below-post-in-list.html" . }}
 				{{ end }}

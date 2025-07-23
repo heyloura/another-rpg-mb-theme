@@ -92,7 +92,7 @@ background-image: url("data:image/svg+xml,%3Csvg width='84' height='84' viewBox=
 		}
 
 		a {
-			color: yellow;
+			color: #dad45e;
 			font-size: 1.0em;
 			line-height: 22px;
 			text-decoration: none;
@@ -346,10 +346,10 @@ background-image: url("data:image/svg+xml,%3Csvg width='84' height='84' viewBox=
 			}
 		}
 		[contenteditable] {
-			border: 2px yellow solid;
+			border: 2px #dad45e solid;
 		}
 		fieldset {
-			border: 2px yellow solid;
+			border: 2px #dad45e solid;
 		}
 		legend {
 			color: greenyellow;

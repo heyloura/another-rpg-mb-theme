@@ -55,7 +55,16 @@
 <section class="content">
 	<section>
 		<p style="text-align: center;margin-bottom: 0;margin-top: 2em;"><b>Recent</b></p>
-		<img style="display:block;margin: 0px auto;" width="562" height="19" src="/img/pinkdaisies.png">
+		<p aria-hidden style="text-align:center;">
+			<button class="sprite wall-brick-left-corner" tab-index="-1"></button>
+			<button class="sprite wall-symbol-3" tab-index="-1"></button>
+			<button class="sprite chest-open" tab-index="-1"></button>
+			<button class="sprite empty" tab-index="-1"></button>
+			<button class="sprite slime-right" tab-index="-1"></button>
+			<button class="sprite tablet" tab-index="-1"></button>
+			<button class="sprite wall-symbol-1" tab-index="-1"></button>
+			<button class="sprite wall-brick-right-corner" tab-index="-1"></button>
+		</p>
 		<div style="clear: both;" class="frame grey-frame">
 			{{ $pages := where .Site.Pages.ByDate.Reverse "Type" "post" }}
 			{{- $paginator := .Paginate $pages 3 }}
@@ -98,12 +107,21 @@
 		</div>
 	</section>
 	<section class="h-feed">
-		<h4>👩‍🌾 Featured Garden Plots</h4>
+		<h4>Featured Adventures</h4>
 		
 			{{ $list := ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
 			{{ if gt (len $list) 0 }}
 
-			<img style="display:block;margin: 0px auto;" width="562" height="19" src="/img/grass.png">
+		<p aria-hidden style="text-align:center;">
+			<button class="sprite racoon-left" tab-index="-1"></button>
+			<button class="sprite tree-wide" tab-index="-1"></button>
+			<button class="sprite cave" tab-index="-1"></button>
+			<button class="sprite thief-left" tab-index="-1"></button>
+			<button class="sprite empty" tab-index="-1"></button>
+			<button class="sprite campfire-lit" tab-index="-1"></button>
+			<button class="sprite tree-wide" tab-index="-1"></button>
+			<button class="sprite tree-narrow" tab-index="-1"></button>
+		</p>
 		<div class="frame golden-frame">
 			<div class="frame grey-frame">
 			{{ range $list }}
@@ -121,7 +139,7 @@
 					<li>
 						<a href="{{ .Permalink }}">
 							<span class="title">{{ strings.FirstUpper .Title }}<span class="leaders" aria-hidden="true"></span></span>
-							<span data-href="{{ .Permalink }}" class="page">🌱🪴{{$random}}</span>
+							<span aria-hidden data-href="{{ .Permalink }}" class="page">{{$random}}{{$random}}{{$random}}</span>
 						</a>
 						<ol role="list" style="padding-left: 2ch;">
 							{{ $category := .Title }}

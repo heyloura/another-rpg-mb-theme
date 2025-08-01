@@ -91,6 +91,18 @@ background-image: url("data:image/svg+xml,%3Csvg width='84' height='84' viewBox=
 			background-origin:padding-box
 		}
 
+		.microblog_post {
+			border-style: solid;
+			border-width: 15px;
+			border-image-repeat: repeat;
+			border-image-width: 18px;
+			padding: 12px;
+			border-image-source:url(/img/border-image.png);
+			border-image-slice:6 6 6 6;
+			background:url(/img/background-image.png) center;
+			border-radius: 2em;
+		}
+
 		a {
 			color: #dad45e;
 			font-size: 1.0em;

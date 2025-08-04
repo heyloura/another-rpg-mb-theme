@@ -1,0 +1,449 @@
+<!doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>ICRPG Hard Suit Personal Locker and Hard Suit Generator</title>
+        <meta name="description" content="ICRPG Hard Suit Personal Locker and Hard Suit Generator">
+        <link rel="shortcut icon" href="https://micro.blog/{{ .Site.Author.username }}/favicon.png" type="image/x-icon" />
+        {{ if .RSSLink -}}
+        <link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
+        <link href="{{ "podcast.xml" | absURL }}" rel="alternate" type="application/rss+xml" title="Podcast" />
+        <link rel="alternate" type="application/json" title="{{ .Site.Title }}" href="{{ "feed.json" | absURL }}" />
+        <link rel="EditURI" type="application/rsd+xml" href="{{ "rsd.xml" | absURL }}" />
+        {{ end -}}
+        <link rel="me" href="https://micro.blog/{{ .Site.Author.username }}" />
+        <link rel="authorization_endpoint" href="https://micro.blog/indieauth/auth" />
+        <link rel="token_endpoint" href="https://micro.blog/indieauth/token" />
+        <link rel="micropub" href="https://micro.blog/micropub" />
+        <link rel="microsub" href="https://micro.blog/microsub" />
+        <link rel="webmention" href="https://micro.blog/webmention" />
+        <link rel="subscribe" href="https://micro.blog/users/follow" />
+        <style>
+            body { max-width: 100ch; }
+            td {padding: 4px;} 
+            tr {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Six random lockers</h1>
+
+        <div id="lockers"></div>
+
+        <h1>Eight random hard suits</h1>
+
+        <div id="suits"></div>
+
+        <script>
+            /**
+             * Randomly shuffle an array
+             * https://stackoverflow.com/a/2450976/1293256
+             * @param  {Array} array The array to shuffle
+             * @return {String}      The first item in the shuffled array
+             */
+            var shuffle = function (array) {
+
+                console.log(array);
+
+                var currentIndex = array.length;
+                var temporaryValue, randomIndex;
+
+                // While there remain elements to shuffle...
+                while (0 !== currentIndex) {
+                    // Pick a remaining element...
+                    randomIndex = Math.floor(Math.random() * currentIndex);
+                    currentIndex -= 1;
+
+                    // And swap it with the current element.
+                    temporaryValue = array[currentIndex];
+                    array[currentIndex] = array[randomIndex];
+                    array[randomIndex] = temporaryValue;
+                }
+
+                return array;
+            };
+            const d4 = [1, 2, 3, 4];
+            const d6 = [1, 2, 3, 4, 5, 6];
+            const d8 = [1, 2, 3, 4, 5, 6, 7, 8];
+            const d7 = [1, 2, 3, 4, 5, 6, 7];
+            const d10 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            const d12 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+            const d20 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+            function _1d20() {
+                return shuffle(d20)[0] - 1;
+            }
+            function _1d8() {
+                return shuffle(d8)[0] - 1;
+            }
+            function _1d7() {
+                return shuffle(d7)[0] - 1;
+            }
+            const frameProperties = [
+                // 0
+                `ABLATIVE: If taking more than 3 HITS in a ROUND, an explosive armor
+                pack detonates, inflicting ULTIMATE damage on all NEAR foes.`,
+                // 1
+                `AGILE: This suit ignores any hardships incurred by footing, balance, or
+                precision of movement on precarious or dangerous terrain.`,
+                // 2
+                `BURSTS: Inflict 1-3 HITS on a part to earn that many EFFORT dice.`,
+                // 3
+                `DECOY: This suit attracts attention with its odd design. Targets being
+                distracted must roll HARD INT to see the ruse.`,
+                // 4
+                `DIVER: Ignore hardships incurred by underwater work or maneuvers.`,
+                // 5
+                `HALO: A high altitude drop design with parachute and heavy duty leg
+                actuators. No collateral damage affects this suit when falling.`,
+                // 6
+                `HEAVY: Traction pads and guard bars. Actions to uproot, shove, or lift
+                this suit are HARD.`,
+                // 7
+                `INTEGRATED: In an emergency, the operator of this suit can absorb
+                HITS to their own body, 3 HP per HIT.`,
+                // 8
+                `ION REACTOR: If a circumstance has this suit being pursued, it can
+                only be caught if crashing or pausing to perform an action. In a flat out
+                race, the ion drive simply cannot be beat.`,
+                // 9
+                `LAST TARGET: If multiple suits are engaged with a sentient enemy,
+                the improvised suit will always be targeted last.`,
+                // 10
+                `MINER: Ignore hardships or collateral damage incurred by
+                subterranean hazards.`,
+                // 11
+                `ORGANIC: The construction of this suit is 75% non metallic materials.
+                Thus, stealth or camouflage is never HARD.`,
+                // 12
+                `OVERLOADER: This suit's reactor core is booby trapped. It can be
+                used as a massive explosive charge. Once activated, the suit will detonate
+                in 4 rounds, vaporizing everything within 200 yards.`,
+                // 13
+                `POWER CYCLER: Regain 1D10% POWER at the end of your TURN.`,
+                // 14
+                `PRECISE: POWER rolls to fire ranged weapons are at half cost.`,
+                // 15
+                `RECOVERY UNIT: When motionless, recover 1D20% POWER.`,
+                // 16
+                `SIMPLE: All repair, upgrade, or mod work on this suit takes 1/4 the
+                normal time, and can be performed with no special facilities.`,
+                // 17
+                `THICK SKIN: POWER used to boost DEFENSE or absorb impacts is
+                used at half its normal cost.`,
+                // 18
+                `TOUGH: Parts mounted to the frame of this suit have 4 HITS.`,
+                // 19
+                `VOLATILE: When rolling for POWER, 90%+ is a critical failure, and
+                10% or less is a critical success (rather than 95/05).`
+            ]
+            const frame = [
+                `COMPACT/MINIMAL</td><td>${frameProperties[_1d20()]}</td>`,
+                `COMMON</td><td>${frameProperties[_1d20()]}<hr/>${frameProperties[_1d20()]}</td>`,
+                `COMMON AQUATIC</td><td>${frameProperties[_1d20()]}<hr/>${frameProperties[4]}</td>`,
+                `COMMON WORKSITE</td><td>${frameProperties[_1d20()]}<hr/>${frameProperties[6]}</td>`,
+                `HIGH GRADE</td><td>${frameProperties[_1d20()]}<hr/>${frameProperties[_1d20()]}</td>`,
+                `HIGH GRADE HALO DROP</td><td>${frameProperties[_1d20()]}<hr/>${frameProperties[5]}<hr/>${frameProperties[3]}`,
+                `HIGH GRADE DEFENDER</td><td>${frameProperties[_1d20()]}<hr/>${frameProperties[18]}<hr/>${frameProperties[17]}`,
+                `PROTOTYPE</td><td>${frameProperties[_1d20()]}<hr/>${frameProperties[_1d20()]}<hr/>${frameProperties[_1d20()]}</td>`
+            ];
+            const description = [
+                `<td>CONSTRUCTION: Caution stripes, heavy supports, hydraulics<hr/>${frame[_1d8()]}`,
+                `<td>ARMORED MILITARY: Angular armor, weapons mounts, camo<hr/>${frame[_1d8()]}`,
+                `<td>EXTREME LIMBS: Extra or oversized arms, specialized hands<hr/>${frame[_1d8()]}`,
+                `<td>CONTOURED ORGANIC: Arthropod shapes, organic, smooth<hr/>${frame[_1d8()]}`,
+                `<td>SLEEK AND COMPACT: Smaller, flexible under fabric<hr/>${frame[_1d8()]}`,
+                `<td>AQUATIC: Pressure rings, air scrubbers, blue and black<hr/>${frame[_1d8()]}`,
+                `<td>SHARP AND DANGEROUS: Blades, drills, spikes or claw hands<hr/>${frame[_1d8()]}`,
+                `<td>STRANGE ASYMMETRIC: Mismatched limbs, bulbous shapes<hr/>${frame[_1d8()]}`]
+            const legs = [
+                `<td>Anchor Boots: Bolts grip surfaces. +3 STR when holding Fast</td>`,
+                `<td>Varia Tread: Fireproof leg armor ignores even magma</td>`,
+                `<td>Cobalt Crampons: Spiked soles. Ice movement is always EASY</td>`,
+                `<td>Magnetic Module: Boot magnets. Walk as normal on any metal</td>`,
+                `<td>Push Treads: Low-geared tracks for dozing. Use no POWER to push</td>`,
+                `<td>Hydrojets: Move twice per turn in aquatic environments</td>`,
+                `<td>Tread Skates: A Fast, evasive suit, +3 DEFENSE</td>`,
+                `<td>Quad Legs: Use any surface as walkable, even inverted</td>`,
+            ];
+            const arm = [
+                `Manipulator Hand: Default hand for multi-use, +1 DEFENSE`,
+                `Cutter Claw: Cut through almost any material with ULTIMATE`,
+                `Grapple Gun: Roll POWER to fire an anchor and 100’ of cable`,
+                `Shell Pistol: Conventional firearm. Does not consume POWER`,
+                `Drill Unit: Roll POWER to penetrate 10’ of most materials in 1 turn`,
+                `Particle Gun: Accelerator rifle. Roll POWER to inflict ENERGY`,
+                `Missile Box: 3 missiles, ULTIMATE, roll POWER to fire, reload 3 ROUNDS`,
+            ]
+            const rightArm = [
+                `<td>Manipulator Hand: Default hand for multi-use, +1 DEFENSE</td>`,
+                `<td>Cutter Claw: Cut through almost any material with ULTIMATE</td>`,
+                `<td>Grapple Gun: Roll POWER to fire an anchor and 100’ of cable</td>`,
+                `<td>Shell Pistol: Conventional firearm. Does not consume POWER</td>`,
+                `<td>Drill Unit: Roll POWER to penetrate 10’ of most materials in 1 turn</td>`,
+                `<td>Particle Gun: Accelerator rifle. Roll POWER to inflict ENERGY</td>`,
+                `<td>Missile Box: 3 missiles, ULTIMATE, roll POWER to fire, reload 3 ROUNDS</td>`,
+                `<td>Module Bolt: Room for two parts<hr/>${arm[_1d7()]}<hr/>${arm[_1d7()]}</td>`,
+            ];
+            const leftArm = [
+                `<td>Manipulator Hand: Default hand for multi-use, +1 DEFENSE</td>`,
+                `<td>Cutter Claw: Cut through almost any material with ULTIMATE</td>`,
+                `<td>Grapple Gun: Roll POWER to fire an anchor and 100’ of cable</td>`,
+                `<td>Shell Pistol: Conventional firearm. Does not consume POWER</td>`,
+                `<td>Drill Unit: Roll POWER to penetrate 10’ of most materials in 1 turn</td>`,
+                `<td>Particle Gun: Accelerator rifle. Roll POWER to inflict ENERGY</td>`,
+                `<td>Missile Box: 3 missiles, ULTIMATE, roll POWER to fire, reload 3 ROUNDS</td>`,
+                `<td>Module Bolt: Room for two parts<hr/>${arm[_1d7()]}<hr/>${arm[_1d7()]}</td>`,
+            ];
+            const bodyBasic = [
+                `Armor Plates: If HIT, expend 10% POWER to ignore`,
+                `Multi tool: Roll POWER to repair 1D4 HITS on suit PARTS`,
+                `Particle Attractor: Absorb 1 HIT from any HIT on CLOSE allies`,
+                `Pauldron Plates: This suit has +4 DEFENSE`,
+                `Weighted: Expend 10% when using melee to add an EFFORT die`,
+                `Self Repair: Roll POWER to recover 1 HIT`,
+                `Flare Tag: Roll POWER to mark a target, attacks against it are EASY`,
+            ];
+            const body = [
+                `<td>Armor Plates: If HIT, expend 10% POWER to ignore</td>`,
+                `<td>Multi tool: Roll POWER to repair 1D4 HITS on suit PARTS</td>`,
+                `<td>Particle Att ractor: Absorb 1 HIT from any HIT on CLOSE allies</td>`,
+                `<td>Pauldron Plates: This suit has +4 DEFENSE</td>`,
+                `<td>Weighted: Expend 10% when using melee to add an EFFORT die</td>`,
+                `<td>Self Repair: Roll POWER to recover 1 HIT</td>`,
+                `<td>Flare Tag: Roll POWER to mark a target, attacks against it are EASY</td>`,
+                `<td>Backpack Bolt: Room for two parts<hr/>${bodyBasic[_1d7()]}<hr/>${bodyBasic[_1d7()]}</td>`,
+            ];
+            const clothing = [
+                `<td>Traveler’s Garb: Basic clothing of natural materials</td>`,
+                `<td>Durafab Outfit: A high tech jumpsuit with buckles and straps</td>`,
+                `<td>Shadowcloth: Superblack jumpsuit. All but invisible in shadows</td>`,
+                `<td>Belt Armor: Variform hex plates. Ignore attacks of 1 point</td>`,
+                `<td>Bolt Armor: Hard points form fitted plates. +2 DEFENSE</td>`,
+                `<td>Ceramplate Armor: Heavy armor. +3 DEFENSE</td>`,
+                `<td>Exo Suit: A noisy setup of braces, grants +1 STR</td>`,
+                `<td>Nanoskin: Active material. Add 1D4 to RECOVERY results</td>`,
+            ];
+            const utilities = [
+                `<td>Nomad’s Bag: A simple hemp sling with food and walking stick</td>`,
+                `<td>Tool Belt: Mechanical or carpentry work is EASY</td>`,
+                `<td>Fast Medical Kit: 3 uses of a D10 healing spray</td>`,
+                `<td>Scanscope: A compact but powerful pocket spyglass</td>`,
+                `<td>Grapple Winch: 50’ of cable and a powered spool</td>`,
+                `<td>Variscope: Visually ‘tag’ a target. This scope will see a ‘ping’ for it</td>`,
+                `<td>Jump Jet: Move twice on your turn or make superhuman jumps</td>`,
+                `<td>Magnet Orb: A tiny hovering orb that can perform simple tasks</td>`
+            ];
+            const weapons = [
+                `<td>Karambit Knife: A compact steel claw weapon, concealable</td>`,
+                `<td>Throwing Daggers: A simple, reliable ranged weapon</td>`,
+                `<td>Pick Hammer: Useful for breaking walls & stone, or as a weapon</td>`,
+                `<td>Xten Sword: A segmented blade that can extend to reach NEAR</td>`,
+                `<td>Thumper Pistol: Heavy shell handgun with one helluva kick</td>`,
+                `<td>Burst Pistol: Fires 2 shells on a trigger pull, but HARD to fire</td>`,
+                `<td>VM Compound Bow: High powered bow with modifi able arrows</td>`,
+                `<td>Variform Carbine: Lever action gun with a +1 DEFENSE shield</td>`,
+            ];
+            const personal = [
+                `<td>Humble Things: A tiny book, waybread, cloak, short piece of rope</td>`,
+                `<td>Strange Stash: Stolen items: an old key, tiny statue, platinum signet</td>`,
+                `<td>Bug Out Bag: Survival supplies for 72 hours, 3 flares, tiny shelter</td>`,
+                `<td>Note to Self: A scrawled note in ink... the GM will tell you its contents</td>`,
+                `<td>Aged Holo: An old 3D image of a family at a picnic</td>`,
+                `<td>Cryptic Artifact: A fist sized object of weird metal and odd markings</td>`,
+                `<td>Momento Morti : A commemorative plaque from a funeral</td>`,
+                `<td>Commendations: A collection of military medals and dog tags</td>`,
+            ];
+            function getHardSuitTableHTML(row) {
+                return `
+                <table  width="100%" border="1">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">#</th>
+                            <th rowspan="2">Description</th>
+                            <th rowspan="2">Properties</th>
+                            <th colspan="4">Parts</th>
+                        </tr>
+                        <tr>
+                            <th>Legs</th>
+                            <th>Right Arm</th>
+                            <th>Left Arm</th>
+                            <th>Body</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${row}
+                    </tbody>
+                </table><br/>`;
+            } 
+            function getLockerTableHTML(row) {
+                return `
+                <table width="100%" border="1">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Clothing</th>
+                            <th>Utilities</th>
+                            <th>Weapons</th>
+                            <th>Personal Items</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${row}
+                    </tbody>
+                </table><br/>`;
+            } 
+            document.getElementById('lockers').innerHTML = `
+                ${getLockerTableHTML(`
+                        <tr>
+                            <td>1.</td>
+                            ${clothing[_1d8()]}
+                            ${utilities[_1d8()]}
+                            ${weapons[_1d8()]}
+                            ${personal[_1d8()]}
+                        </tr>
+                `)}
+                ${getLockerTableHTML(`
+                        <tr>
+                            <td>2.</td>
+                            ${clothing[_1d8()]}
+                            ${utilities[_1d8()]}
+                            ${weapons[_1d8()]}
+                            ${personal[_1d8()]}
+                        </tr>
+                `)}
+                ${getLockerTableHTML(`
+                        <tr>
+                            <td>3.</td>
+                            ${clothing[_1d8()]}
+                            ${utilities[_1d8()]}
+                            ${weapons[_1d8()]}
+                            ${personal[_1d8()]}
+                        </tr>
+                `)}
+                ${getLockerTableHTML(`
+                        <tr>
+                            <td>4.</td>
+                            ${clothing[_1d8()]}
+                            ${utilities[_1d8()]}
+                            ${weapons[_1d8()]}
+                            ${personal[_1d8()]}
+                        </tr>
+                `)}
+                ${getLockerTableHTML(`
+                        <tr>
+                            <td>5.</td>
+                            ${clothing[_1d8()]}
+                            ${utilities[_1d8()]}
+                            ${weapons[_1d8()]}
+                            ${personal[_1d8()]}
+                        </tr>
+                `)}
+                ${getLockerTableHTML(`
+                        <tr>
+                            <td>6.</td>
+                            ${clothing[_1d8()]}
+                            ${utilities[_1d8()]}
+                            ${weapons[_1d8()]}
+                            ${personal[_1d8()]}
+                        </tr>
+                `)}
+            `;
+            document.getElementById('suits').innerHTML = `
+                ${getHardSuitTableHTML(`
+                    <tr>
+                        <td>1.</td>
+                        ${description[_1d8()]}
+                        ${legs[_1d8()]}
+                        ${rightArm[_1d8()]}
+                        ${leftArm[_1d8()]}
+                        ${body[_1d8()]}
+                    </tr>
+                `)}
+                ${getHardSuitTableHTML(`
+                    <tr>
+                        <td>2.</td>
+                        ${description[_1d8()]}
+                        ${legs[_1d8()]}
+                        ${rightArm[_1d8()]}
+                        ${leftArm[_1d8()]}
+                        ${body[_1d8()]}
+                    </tr>
+                `)}
+                ${getHardSuitTableHTML(`
+                    <tr>
+                        <td>3.</td>
+                        ${description[_1d8()]}
+                        ${legs[_1d8()]}
+                        ${rightArm[_1d8()]}
+                        ${leftArm[_1d8()]}
+                        ${body[_1d8()]}
+                    </tr>
+                `)}
+                ${getHardSuitTableHTML(`
+                    <tr>
+                        <td>4.</td>
+                        ${description[_1d8()]}
+                        ${legs[_1d8()]}
+                        ${rightArm[_1d8()]}
+                        ${leftArm[_1d8()]}
+                        ${body[_1d8()]}
+                    </tr>
+                `)}
+                ${getHardSuitTableHTML(`
+                    <tr>
+                        <td>5.</td>
+                        ${description[_1d8()]}
+                        ${legs[_1d8()]}
+                        ${rightArm[_1d8()]}
+                        ${leftArm[_1d8()]}
+                        ${body[_1d8()]}
+                    </tr>
+                `)}
+                ${getHardSuitTableHTML(`
+                    <tr>
+                        <td>5.</td>
+                        ${description[_1d8()]}
+                        ${legs[_1d8()]}
+                        ${rightArm[_1d8()]}
+                        ${leftArm[_1d8()]}
+                        ${body[_1d8()]}
+                    </tr>
+                `)}
+                ${getHardSuitTableHTML(`
+                    <tr>
+                        <td>6.</td>
+                        ${description[_1d8()]}
+                        ${legs[_1d8()]}
+                        ${rightArm[_1d8()]}
+                        ${leftArm[_1d8()]}
+                        ${body[_1d8()]}
+                    </tr>
+                `)}
+                ${getHardSuitTableHTML(`
+                    <tr>
+                        <td>7.</td>
+                        ${description[_1d8()]}
+                        ${legs[_1d8()]}
+                        ${rightArm[_1d8()]}
+                        ${leftArm[_1d8()]}
+                        ${body[_1d8()]}
+                    </tr>
+                `)}
+                ${getHardSuitTableHTML(`
+                    <tr>
+                        <td>8.</td>
+                        ${description[_1d8()]}
+                        ${legs[_1d8()]}
+                        ${rightArm[_1d8()]}
+                        ${leftArm[_1d8()]}
+                        ${body[_1d8()]}
+                    </tr>
+                `)}
+            `;
+        </script>
+
+    </body>
+</html>

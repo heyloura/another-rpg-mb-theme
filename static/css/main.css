@@ -91,7 +91,7 @@ background-image: url("data:image/svg+xml,%3Csvg width='84' height='84' viewBox=
 			background-origin:padding-box
 		}
 
-		.microblog_post {
+		.microblog_post, .microblog_reply_form {
 			border-style: solid;
 			border-width: 15px;
 			border-image-repeat: repeat;

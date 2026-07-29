@@ -4,8 +4,6 @@
     <style>
 		.photos-grid-item {
 			object-fit: cover;
-		    padding: 0.25em;
-		    border-radius: 4px;
 		}
 	</style>
 	<div class="frame golden-frame">
@@ -15,7 +13,7 @@
 	{{ range $index, $value := $list }}
 		<a href="{{ .Permalink }}" class="gallery-item">
 			{{ range first 1 .Params.photos }}
-				<img src="{{ . }}" width="300" height="300" class="photos-grid-item" loading="lazy" />
+				<img src="https://micro.blog/photos/600x/{{ . }}" width="300" height="300" class="photos-grid-item" loading="lazy" />
 			{{ end }}
 		</a>
 	{{ end }}

@@ -170,11 +170,11 @@
 			</div>
 			<div class='icon-menu'>
 				<div class='rpgui-icon potion-red'></div>
-				<p> Follow <a target='_blank' href='https://micro.blog/heyloura?remote_follow=1' target='_blank'>@heyloura@heyloura.com</a></p>
+				<p><a target='_blank' href='https://micro.blog/heyloura?remote_follow=1' target='_blank'>@heyloura@heyloura.com</a></p>
 			</div>
 			<div class='icon-menu'>
 				<div class='rpgui-icon potion-blue'></div>
-				<p style='margin:0'>Like this post: <button style="display:inline-block;" class='golden-button tinylytics_kudos'></button></p>
+				<p style='margin:0'>Like <button style="display:inline-block;" class='golden-button tinylytics_kudos'></button></p>
 			</div>
 		</div>
 	</div>
@@ -186,8 +186,6 @@
 	<script>
 	// TODO: Temporary, will handle multiple instances in the future.
 	const conversationLink = document.querySelector('.conversation-on-mb');
-	const lillihubLink = document.querySelector('.conversation-on-lilli-link');
-	const lillihub = document.querySelector('.conversation-on-lilli-show');
 	const currentPageURLEncoded = encodeURIComponent('{{ .Permalink }}');
 	fetch('https://micro.blog/conversation.js?format=jsonfeed&url=' + currentPageURLEncoded)
 	.then(response => response.json())
@@ -195,10 +193,6 @@
 	conversationLink.setAttribute('href', conversation.home_page_url);
 	conversationLink.innerText = '{{ $link_text }}';
 	conversationLink.classList.remove('conversation-on-mb-fallback');
-	
-	lillihubLink.setAttribute('href', 'https://lillihub.com/timeline/' + conversation.home_page_url.split('/').slice(-1));
-	lillihub.style.display = 'inline-block';
-	
 	})
 	.catch((error) => {
 	// TODO: nothing for now…

@@ -375,158 +375,150 @@
     slideout.toggle();
   });
 </script>
-<script src="https://unpkg.com/floating.js"></script>
+	<script src="https://derdere.github.io/site-pet/site-pet.js"></script>
 <script>
-const isReduced = window.matchMedia(`(prefers-reduced-motion: reduce)`) === true || window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
+  // replace example with the desired sprite name
+  var ele = createSitePet('example');
+</script>
+<!-- <script src="https://unpkg.com/floating.js"></script> -->
+<script>
+// const isReduced = window.matchMedia(`(prefers-reduced-motion: reduce)`) === true || window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
 
-// Halloween
-//-------------------------------
+// // Halloween
+// //-------------------------------
+// // function emoji() {
+// //   floating({
+// //     content: "👻",
+// //     number: 1,
+// //     duration: 26,
+// //     repeat: 1,
+// //   });
+// //   floating({
+// //     content: "🎃",
+// //     number: 1,
+// //     duration: 24,
+// //     repeat: 1,
+// //   });
+// //   floating({
+// //     content: "🧟‍♀️",
+// //     number: 1,
+// //     duration: 33,
+// //     repeat: 1,
+// //   });
+// //   floating({
+// //     content: "🧙‍♀️",
+// //     number: 1,
+// //     duration: 18,
+// //      repeat: 1,
+// //     size: 2
+// //   });
+// //   floating({
+// //     content: "🪦",
+// //     number: 1,
+// //     duration: 26,
+// //     repeat: 1,
+// //   });
+// //   floating({
+// //     content: "🦇",
+// //     number: 1,
+// //     duration: 24,
+// //     repeat: 1,
+// //   });
+// //   floating({
+// //     content: "🍬",
+// //     number: 1,
+// //     duration: 33,
+// //     repeat: 1,
+// //   });
+// //   floating({
+// //     content: "🕷️",
+// //     number: 1,
+// //     duration: 23,
+// //      repeat: 1,
+// //     size: 2
+// //   });
+// //   floating({
+// //     content: "Boo!",
+// //     number: 1,
+// //     duration: 20,
+// //     repeat: 1,
+// //     size: 5
+// //   });
+// // }
+
+// // Generic
+// // ------------------------------------------------------------------------	
 // function emoji() {
 //   floating({
-//     content: "👻",
+//     content: "🐸",
 //     number: 1,
 //     duration: 26,
 //     repeat: 1,
 //   });
 //   floating({
-//     content: "🎃",
+//     content: "🦄",
 //     number: 1,
 //     duration: 24,
 //     repeat: 1,
 //   });
 //   floating({
-//     content: "🧟‍♀️",
+//     content: "🐲",
 //     number: 1,
 //     duration: 33,
 //     repeat: 1,
 //   });
 //   floating({
-//     content: "🧙‍♀️",
+//     content: "🐍",
 //     number: 1,
 //     duration: 18,
 //      repeat: 1,
 //     size: 2
 //   });
 //   floating({
-//     content: "🪦",
+//     content: "👑",
 //     number: 1,
 //     duration: 26,
 //     repeat: 1,
 //   });
 //   floating({
-//     content: "🦇",
+//     content: "🛡️",
 //     number: 1,
 //     duration: 24,
 //     repeat: 1,
 //   });
 //   floating({
-//     content: "🍬",
+//     content: "🗡️",
 //     number: 1,
 //     duration: 33,
 //     repeat: 1,
 //   });
 //   floating({
-//     content: "🕷️",
+//     content: "🏴‍☠️",
 //     number: 1,
 //     duration: 23,
 //      repeat: 1,
 //     size: 2
 //   });
 //   floating({
-//     content: "Boo!",
+//     content: "⭐",
 //     number: 1,
 //     duration: 20,
 //     repeat: 1,
 //     size: 5
 //   });
 // }
-
-// Generic
-// ------------------------------------------------------------------------	
-function emoji() {
-  floating({
-    content: "🐸",
-    number: 1,
-    duration: 26,
-    repeat: 1,
-  });
-  floating({
-    content: "🦄",
-    number: 1,
-    duration: 24,
-    repeat: 1,
-  });
-  floating({
-    content: "🐲",
-    number: 1,
-    duration: 33,
-    repeat: 1,
-  });
-  floating({
-    content: "🐍",
-    number: 1,
-    duration: 18,
-     repeat: 1,
-    size: 2
-  });
-  floating({
-    content: "👑",
-    number: 1,
-    duration: 26,
-    repeat: 1,
-  });
-  floating({
-    content: "🛡️",
-    number: 1,
-    duration: 24,
-    repeat: 1,
-  });
-  floating({
-    content: "🗡️",
-    number: 1,
-    duration: 33,
-    repeat: 1,
-  });
-  floating({
-    content: "🏴‍☠️",
-    number: 1,
-    duration: 23,
-     repeat: 1,
-    size: 2
-  });
-  floating({
-    content: "⭐",
-    number: 1,
-    duration: 20,
-    repeat: 1,
-    size: 5
-  });
-}
 	
-if (!!isReduced) {
-    // DON'T use an amination here!
-} else {
-	var x = 5;
-	var interval = 6 * 1000;
-	for (var i = 0; i < x; i++) {
-	    setTimeout(function () {
-emoji();
-	    }, i * interval)
-	}
-}
+// if (!!isReduced) {
+//     // DON'T use an amination here!
+// } else {
+// 	var x = 5;
+// 	var interval = 6 * 1000;
+// 	for (var i = 0; i < x; i++) {
+// 	    setTimeout(function () {
+// emoji();
+// 	    }, i * interval)
+// 	}
+// }
 </script>
-<style>
-	.float-container {
-		width: 100vw;
-	    min-height: 100vh;
-	    overflow: hidden;
-	    position: absolute;
-	    top: 0;
-	    left: 0;
-	    pointer-events: none;
-	    z-index: -1;
-	    height: 100%;
-	}
-</style>
 </body>
 </html>

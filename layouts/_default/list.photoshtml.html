@@ -1,36 +1,4 @@
 {{ define "main" }}
-	<style>
-	.square-gallery {
-		  display: grid;
-		  grid-template-columns: repeat(3, 1fr);
-		  width: min(73vw, 548px);
-	}
-	.gallery-item {
-		display: flex;
-		justify-content: center;
-		width: calc(min(73vw, 548px) / 3);
-		height: calc(min(73vw, 548px)/ 3);
-		background-position: center center;
-		background-size: cover;
-		background-repeat: no-repeat;
-	}
-	@media (min-width:768px) {
-		.square-gallery {
-			  display: grid;
-			  grid-template-columns: repeat(3, 1fr);
-			  width: min(54vw, 548px);
-		}
-		.gallery-item {
-			display: flex;
-			justify-content: center;
-			width: calc(min(54vw, 548px) / 3);
-			height: calc(min(54vw, 548px) / 3);
-			background-position: center center;
-			background-size: cover;
-			background-repeat: no-repeat;
-		}
-	}
-	</style>
 	<section>
 	<h4>Photos</h4>
 	<img style="display:block;margin: 0px auto;" width="562" height="19" src="/img/grass.png">
@@ -49,5 +17,16 @@
 	</div>
 	</div>
 	</section>
+<link rel="stylesheet" href="https://unpkg.com/flexmasonry/dist/flexmasonry.css">
+<script src="https://unpkg.com/flexmasonry/dist/flexmasonry.js"></script>
+<script>FlexMasonry.init('.square-gallery',{
+    responsive: true,
+	breakpointCols: {
+        'min-width: 992px': 3,
+        'min-width: 768px': 2,
+        'min-width: 576px': 1,
+    },
+    numCols: 3
+});</script>
 	{{ partial "game.html" . }}
 {{ end }}

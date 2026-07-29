@@ -1,0 +1,31 @@
+{{ define "main" }}
+	<section>
+	<h4>Photos</h4>
+
+	<div class="frame golden-frame">
+	<div class="square-gallery">
+	{{- $list := where .Site.Pages ".Params.photos" "!=" nil -}}
+	{{- $len := (len $list) -}}
+	{{ range $index, $value := $list }}
+		<a href="{{ .Permalink }}" class="gallery-item">
+			{{ range first 1 .Params.photos }}
+				<img src="{{ . }}" width="300" height="300" class="photos-grid-item" loading="lazy" />
+			{{ end }}
+		</a>
+	{{ end }}
+	</div>
+	</div>
+	</section>
+<link rel="stylesheet" href="https://unpkg.com/flexmasonry/dist/flexmasonry.css">
+<script src="https://unpkg.com/flexmasonry/dist/flexmasonry.js"></script>
+<script>FlexMasonry.init('.square-gallery',{
+    responsive: true,
+	breakpointCols: {
+        'min-width: 992px': 3,
+        'min-width: 768px': 2,
+        'min-width: 576px': 1,
+    },
+    numCols: 3
+});</script>
+	{{ partial "game.html" . }}
+{{ end }}

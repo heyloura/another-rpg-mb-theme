@@ -1,6 +1,12 @@
 {{ define "main" }}
 <aside class="frame border-frame">
-	<p>
+	   {{ range .Site.Pages }}
+	   {{- if and (in .Params.Navigation "false") (eq (lower .Params.Title) (lower "intro"))}}
+	   <div>
+		   {{ .Content }}
+	   </div>
+	   {{- end}}
+	<!--<p>
 		This website covers no particular topic and is instead an amalgamation of things
 		I find interesting or spent time researching or doing. All timestamps (unless otherwise indicated) 
 		are the dates things were last updated.
@@ -49,7 +55,7 @@
 				{{ end }}
 			</ol>
 		</li>
-	</ol>
+	</ol> -->
 
 </aside>
 <section class="content">

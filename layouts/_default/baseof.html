@@ -379,8 +379,12 @@
 </script>
 	<script src="https://derdere.github.io/site-pet/site-pet.js"></script>
 <script>
-  // replace example with the desired sprite name
-  var ele = createSitePet('example');
+	const isReduced = window.matchMedia(`(prefers-reduced-motion: reduce)`) === true || window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
+	if (!!isReduced) {
+    	// DON'T use an amination here!
+	} else {
+		var ele = createSitePet('example');
+	}  
 </script>
 <!-- <script src="https://unpkg.com/floating.js"></script> -->
 <script>

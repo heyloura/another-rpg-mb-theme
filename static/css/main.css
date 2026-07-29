@@ -466,17 +466,18 @@ background-image: url("data:image/svg+xml,%3Csvg width='84' height='84' viewBox=
 			background:url(/img/background-image-golden.png) center;
 		}
         .h-entry img {image-rendering: auto;border-radius:4px;}
-		@media (min-width:768px) {
-			#gamePrompt {display:none;}
-			.sprite{margin:2px;}
+		@media (max-width:768px) {
+			#gamePrompt {display:none !important;}
+			.sprite{margin:2px !important;}
 			.toc-list li > a .leaders::after, .toc-list li > .noA .leaders::after {
-				    content: "";
+				    content: "" !important;
 				}
 			#panel > section > section.h-feed > div > div > ol > li > ol > li {
-				margin-bottom: 1em;
-				border-bottom: 1px solid #dad45e;
+				margin-bottom: 1em !important;
+				border-bottom: 1px solid #dad45e !important;
 			}
-			
+		}
+		@media (min-width:768px) {			
 			.border-frame, .microblog_post, .microblog_reply_form, #search-space-results  {
 				border-style: solid;
 				border-width: 15px;

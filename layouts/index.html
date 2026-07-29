@@ -1,10 +1,11 @@
 {{ define "main" }}
 <aside class="frame border-frame">
 	   {{ range .Site.Pages }}
-	   {{- if and (in .Params.Navigation "false") (eq (lower .Params.Title) (lower "intro"))}}
-	   <div>
-		   {{ .Content }}
-	   </div>
+		   {{- if and (in .Params.Navigation "false") (eq (lower .Params.Title) (lower "intro"))}}
+		   <div>
+			   {{ .Content }}
+		   </div>
+		   {{- end}}
 	   {{- end}}
 	<!--<p>
 		This website covers no particular topic and is instead an amalgamation of things

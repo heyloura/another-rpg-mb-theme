@@ -161,12 +161,13 @@
 			<img class='avatar' style='image-rendering: pixelated; border: 4px solid #BB7E34' height='125' src="/uploads/2024/3a04add34b.png" alt="Auto-generated description: A pixel art character with long brown hair stands outdoors at night under a starry sky with purple clouds.">
 			<!--<img class='avatar' style='image-rendering: pixelated; border: 4px solid #BB7E34' height='125' src="/img/farm_avatar.png">-->
 		</p>
-		<p>
-			Hi, I'm <a rel="author" class="p-author h-card" href="/">Loura</a> and this is my digital space. Right now I'm exploring it as a 
-			<a href="https://maggieappleton.com/garden-history/">digital garden</a>.
-			<!--Please feel free to <a href="/surprise-me">explore</a>, learn more <a href="/about">about me</a>, 
-			<a href="/work">my work</a> and what I'm up to <a href="/now">now</a>.-->
-		</p>
+		{{ range .Site.Pages }}
+		   {{- if and (in .Params.Navigation "false") (eq (lower .Params.Title) (lower "sidebar"))}}
+		   <div>
+			   {{ .Content }}
+		   </div>
+		   {{- end}}
+	   {{- end}}
 		<a class="button" href='/surprise-me'>🗝️ Surprise</a>
 		<a class="button" href='/archive'>💀 Archive</a>
 		<a class="button" href='/search-space'>🔮 Search</a>
@@ -266,7 +267,7 @@
 			</div>
 			<header><h5>Spaces</h5></header>
 			<p style="text-align: left;">
-				<a style="font-size: 0.9em;" target='_blank' href='https://micro.blog/heyloura'>✴️ Micro.blog account</a>
+				<a style="font-size: 0.9em;" target='_blank' href='https://micro.blog/heyloura'>✴️ Micro.blog account</a><br/> 
 				<a style="font-size: 0.9em;" href="https://micro.blog/heyloura?remote_follow=1">💫 @heyloura@heyloura.com</a><br/>       
 				<a style="font-size: 0.9em;" target='_blank' href='https://github.com/heyloura'>🐈‍⬛ Github Projects</a>
 			</p>
@@ -374,63 +375,127 @@
     slideout.toggle();
   });
 </script>
-<!--<script src="https://unpkg.com/floating.js"></script>
+<script src="https://unpkg.com/floating.js"></script>
 <script>
 const isReduced = window.matchMedia(`(prefers-reduced-motion: reduce)`) === true || window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
 
+// Halloween
+//-------------------------------
+// function emoji() {
+//   floating({
+//     content: "👻",
+//     number: 1,
+//     duration: 26,
+//     repeat: 1,
+//   });
+//   floating({
+//     content: "🎃",
+//     number: 1,
+//     duration: 24,
+//     repeat: 1,
+//   });
+//   floating({
+//     content: "🧟‍♀️",
+//     number: 1,
+//     duration: 33,
+//     repeat: 1,
+//   });
+//   floating({
+//     content: "🧙‍♀️",
+//     number: 1,
+//     duration: 18,
+//      repeat: 1,
+//     size: 2
+//   });
+//   floating({
+//     content: "🪦",
+//     number: 1,
+//     duration: 26,
+//     repeat: 1,
+//   });
+//   floating({
+//     content: "🦇",
+//     number: 1,
+//     duration: 24,
+//     repeat: 1,
+//   });
+//   floating({
+//     content: "🍬",
+//     number: 1,
+//     duration: 33,
+//     repeat: 1,
+//   });
+//   floating({
+//     content: "🕷️",
+//     number: 1,
+//     duration: 23,
+//      repeat: 1,
+//     size: 2
+//   });
+//   floating({
+//     content: "Boo!",
+//     number: 1,
+//     duration: 20,
+//     repeat: 1,
+//     size: 5
+//   });
+// }
+
+// Generic
+// ------------------------------------------------------------------------	
 function emoji() {
   floating({
-    content: "👻",
+    content: "🐸",
     number: 1,
     duration: 26,
     repeat: 1,
   });
   floating({
-    content: "🎃",
+    content: "🦄",
     number: 1,
     duration: 24,
     repeat: 1,
   });
   floating({
-    content: "🧟‍♀️",
+    content: "🐲",
     number: 1,
     duration: 33,
     repeat: 1,
   });
   floating({
-    content: "🧙‍♀️",
+    content: "🐍",
     number: 1,
     duration: 18,
      repeat: 1,
     size: 2
   });
   floating({
-    content: "🪦",
+    content: "👑",
     number: 1,
     duration: 26,
     repeat: 1,
   });
   floating({
-    content: "🦇",
+    content: "🛡️",
     number: 1,
     duration: 24,
     repeat: 1,
   });
   floating({
-    content: "🍬",
+    content: "🗡️",
     number: 1,
     duration: 33,
     repeat: 1,
   });
   floating({
-    content: "🕷️",
+    content: "🏴‍☠️",
     number: 1,
     duration: 23,
      repeat: 1,
     size: 2
   });
   floating({
-    content: "Boo!",
+    content: "⭐",
     number: 1,
     duration: 20,
     repeat: 1,
@@ -449,7 +514,7 @@ emoji();
 	    }, i * interval)
 	}
 }
-</script>-->
+</script>
 
 </body>
 </html>

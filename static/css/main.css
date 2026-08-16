@@ -328,7 +328,7 @@ background-image: url("data:image/svg+xml,%3Csvg width='84' height='84' viewBox=
 			  grid-template-columns: repeat(3, 1fr);
 			  width: min(73vw, 548px);
 		}
-		.gallery-item {
+		/* .gallery-item {
 			display: flex;
 			justify-content: center;
 			width: calc(min(73vw, 548px) / 3);
@@ -336,7 +336,7 @@ background-image: url("data:image/svg+xml,%3Csvg width='84' height='84' viewBox=
 			background-position: center center;
 			background-size: cover;
 			background-repeat: no-repeat;
-		}
+		} */
 		code {
 			color: #a6e22e;
 			background-color: #272822;
@@ -347,7 +347,7 @@ background-image: url("data:image/svg+xml,%3Csvg width='84' height='84' viewBox=
 				  grid-template-columns: repeat(3, 1fr);
 				  width: min(54vw, 548px);
 			}
-			.gallery-item {
+			/* .gallery-item {
 				display: flex;
 				justify-content: center;
 				width: calc(min(54vw, 548px) / 3);
@@ -355,7 +355,7 @@ background-image: url("data:image/svg+xml,%3Csvg width='84' height='84' viewBox=
 				background-position: center center;
 				background-size: cover;
 				background-repeat: no-repeat;
-			}
+			} */
 		}
 		[contenteditable] {
 			border: 2px #dad45e solid;
